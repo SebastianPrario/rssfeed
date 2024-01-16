@@ -1,0 +1,7 @@
+.div  {
+    background-color: rgba(156, 156, 226, 0.839);
+    height: 200px;
+    overflow: hidden;
+    border-color: black;
+    border: 100px,10px,10px;
+}
