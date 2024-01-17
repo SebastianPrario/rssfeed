@@ -2,11 +2,12 @@ import { useEffect , useRef, useState } from 'react'
 import axios from 'axios'
 import  gsap from "gsap";
 import styles from './App.module.css'
-import Parser from 'rss-parser';
-
 
 
 function App() {
+ 
+  
+  const URL = (import.meta.env.VITE_REACT_API_URL)
   
   const divContext = useRef(null)
   const [ notes , setNotes] = useState([])
@@ -23,7 +24,6 @@ function App() {
   });
   const articles = async () =>{
 
-  const URL = 'http://localhost:4000/'
   const articles = await (await axios.get(URL)).data
     setNotes(articles)
   }
