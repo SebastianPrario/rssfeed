@@ -1,7 +1,16 @@
-.div  {
-    background-color: rgba(156, 156, 226, 0.839);
-    height: 200px;
-    overflow: hidden;
+.container {
+    display: flex;
+    flex-direction: row;
+
+    
+}
+
+
+.component2{
+    background-color: rgba(198, 198, 242, 0.839);
+    height: 50%;
+   
     border-color: black;
     border: 100px,10px,10px;
+    margin-top: 1%;
 }

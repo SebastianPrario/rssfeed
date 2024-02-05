@@ -1,58 +1,52 @@
-import { useEffect , useRef, useState } from 'react'
+import { useEffect ,  useState } from 'react'
 import axios from 'axios'
-import  gsap from "gsap";
+import Component1 from './component/Component1/Component1';
+import Component2 from './component/Component2/Component2';
 import styles from './App.module.css'
-
 
 function App() {
  
   
   const URL = (import.meta.env.VITE_REACT_API_URL)
-  
-  const divContext = useRef(null)
+  const URL2 = (import.meta.env.VITE_REACT_API_URL2)
+ 
   const [ notes , setNotes] = useState([])
+  const [ notes2 , setNotes2] = useState([])
+  
+  const articles2 = async () =>{
 
-  gsap.to(divContext.current, {
-    color: "red",
-    duration: 100, 
-    
-    y: 500,
-  });
-  gsap.from(divContext.current, {
-    color: "red",
-    y: -500,
-  });
+    const articles2 = await (await axios.get(URL2)).data
+    setNotes2(articles2)
+
+  }
+
+  
   const articles = async () =>{
 
   const articles = await (await axios.get(URL)).data
-    setNotes(articles)
+  setNotes(articles)
   }
   
   useEffect (() =>{ 
     articles()
+    articles2()
   
-   },[])
+  },[])
+  
   
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-          <div className='col'>
-          <div>
-           <div >
-              <h5 className='text-center fs-1 text-danger'>titulares</h5>
-                <div className={styles.div}>
-                <div  ref={divContext}>
-                  {notes.map ( elem => 
-                  <p className='text-primary text-center fs-4'>{elem}</p>)}
-                </div>
-                </div>
-
-            </div>
-          </div>
-          </div>
-      </div>  
+    <div className='conteiner'>
+      <div className={styles.component1}>
+           <Component1
+            notes  = {notes} />
+      </div>
+      <div className='col-6'>
+           <Component2
+            notes2  = {notes2}  /> 
+      </div>
     </div>
+  
   )
 }
 
