@@ -12,6 +12,13 @@ function App() {
   const [ notes , setNotes] = useState([{}])
   const [ notes2 , setNotes2] = useState([{}])
   
+  const getArticles = () => {
+    setInterval( () => {
+      articles()
+      articles2()
+    },600000)
+  }
+
   const articles2 = async () =>{
 
     const articles2 = await (await axios.get(URL2)).data
@@ -31,16 +38,16 @@ function App() {
   useEffect (() =>{ 
     articles()
     articles2()
-  
+    getArticles()
   },[])
   
-  console.log(notes)
+
 
   return (
-    <div className='conteiner'>
+    <div className={styles.container}>
       <div>
       { notes.length<1 ? <div> <p>esperando...</p> </div> :  
-        ( <div className={styles.component1}>
+        ( <div>
           <Component1  notes  = {notes}  /> 
           </div>
         )

@@ -1,16 +1,9 @@
 .container {
     display: flex;
     flex-direction: row;
-
+    height: 100vh;
+    max-height: 100vh;
+    background-color: rgb(12, 12, 175);
+    overflow: hidden;
     
-}
-
-
-.component2{
-    background-color: rgba(198, 198, 242, 0.839);
-    height: 50%;
-   
-    border-color: black;
-    border: 100px,10px,10px;
-    margin-top: 1%;
 }
