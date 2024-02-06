@@ -9,8 +9,8 @@ function App() {
   const URL = (import.meta.env.VITE_REACT_API_URL)
   const URL2 = (import.meta.env.VITE_REACT_API_URL2)
   
-  const [ notes , setNotes] = useState([])
-  const [ notes2 , setNotes2] = useState([])
+  const [ notes , setNotes] = useState([{}])
+  const [ notes2 , setNotes2] = useState([{}])
   
   const articles2 = async () =>{
 

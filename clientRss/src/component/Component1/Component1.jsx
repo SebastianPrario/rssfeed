@@ -1,4 +1,4 @@
-import  { useEffect, useRef, useState } from 'react';
+import  {  useEffect, useRef, useState } from 'react';
 import styles from './Component1.module.css'
 import  gsap from "gsap";
 
@@ -8,26 +8,28 @@ const Component1 = ({notes}) => {
     console.log(notes)
     const [ article, setArticle] = useState()
     const [ source, setSource] = useState()
-    const [ altura , setAltura] = useState(0)
-    const divContext = useRef()
+    const divContext   = useRef()
+    let altura = 1000
+    if(divContext.current) { altura = (divContext.current.offsetHeight)}
    
     const tl = gsap.timeline({repeat: -1});
-   
-    
+    console.log(altura)
     tl.to(divContext.current, {
         duration: 0,
-        y: 450
+        y: 200,
     })
 
     tl.to(divContext.current, {
         duration: 100 ,
-        y: (-1000),
+        y: -altura,
         ease: "none"
-    });
- 
+    }) 
+   
     useEffect (()=>{
+        !!notes &&  
         setArticle(notes)
         setSource(notes[0].source)
+       
     } , [notes])
     
  return (
