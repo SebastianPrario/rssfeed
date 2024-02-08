@@ -9,6 +9,7 @@ const Component1 = ({notes}) => {
     const [ source, setSource] = useState()
     const divContext   = useRef()
     let altura = 1000
+    
     if(divContext.current) { altura = (divContext.current.offsetHeight)}
    
     const tl = gsap.timeline({repeat: -1});
@@ -32,13 +33,12 @@ const Component1 = ({notes}) => {
     } , [notes])
     
  return (
-        <div className={styles.div}>
-            <div> 
-                 <h5 className='text-center fs-1 text-danger'>titulares SP</h5>
-                <p className='text-center fs-4 text-primary'>{source}</p>
+        <div className={styles.component1}>
+            <div className='row bg-primary z-3 '> 
+                <h5 className='text-center fs-1 bg-primary z-3 text-white'>titulares SP</h5>
+                <p className='text-center fs-4 text-white'>{source}</p>
             </div>
-            <div className={styles.div}>
-           
+            <div className='row'>
                 <div  className='pt-4' id="miDiv" ref={divContext}>
                     {article && article.map ( (elem, index) => 
                     <div 

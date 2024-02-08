@@ -27,7 +27,7 @@ const Component2 =  ({notes2})  => {
     <div className={styles.container}>
         <div>
             <div  className='my-4 mx-4 text-center'>
-                <p className='display-4 text-align-center'><b>{title}</b></p>
+                <p className='display-5 text-align-center'><b>{title}</b></p>
                 <p>{source}</p>
             </div>
         </div>

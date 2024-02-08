@@ -13,6 +13,9 @@ function App() {
   const [ notes2 , setNotes2] = useState([{}])
   
   const getArticles = () => {
+    if(notes.length<2 || notes2.length<2) { 
+      articles()
+      articles2()}
     setInterval( () => {
       articles()
       articles2()
@@ -20,19 +23,18 @@ function App() {
   }
 
   const articles2 = async () =>{
-
+    try {
     const articles2 = await (await axios.get(URL2)).data
-    
     articles2 && setNotes2(articles2)
+    }catch (error) { console.log('error conexion con el servidor')}
 
   }
 
-  
-  
   const articles = async () =>{
-
+  try{
   const articles = await (await axios.get(URL)).data
   articles && setNotes(articles)
+  }catch (error){ console.log('error conexion con el servidor')}
   }
   
   useEffect (() =>{ 
@@ -41,22 +43,25 @@ function App() {
     getArticles()
   },[])
   
-
-
+  
+ 
   return (
     <div className={styles.container}>
-      <div>
-      { notes.length<1 ? <div> <p>esperando...</p> </div> :  
-        ( <div>
-          <Component1  notes  = {notes}  /> 
+      
+      { notes.length<2 ? <div className={styles.component1}> <p>esperando...</p> </div> :  
+        ( <div className={styles.component1}>
+            <Component1  notes  = {notes}  /> 
           </div>
         )
       }
-      <div className='col-6'>
-           <Component2
+      { notes2.length<2 ? <div className={styles.component1}> <p>esperando...</p> </div> :  
+        ( <div className='col-6'>
+            <Component2
             notes2  = {notes2}  />
-      </div> 
-      </div>
+          </div> 
+        )
+      }
+         
     </div>
   
   )
