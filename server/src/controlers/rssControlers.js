@@ -8,19 +8,24 @@ const parseInfo = async (source) => {
     switch (source.source) {
         case "clarin":
             console.log('entro clarin')
-          URL = 'https://www.clarin.com/rss'
+          URL = ['https://www.clarin.com/rss','https://www.clarin.com/rss/policiales/',
+          'https://www.clarin.com/rss/politica/','https://www.clarin.com/rss/internacional/',
+          'https://www.clarin.com/rss/deportes/','https://www.clarin.com/rss/economia/'
+            ]
           break;         
         case "telam":
             console.log('entro telam')
-            URL = 'https://www.telam.com.ar/rss2/ultimasnoticias.xml';
+            URL = ['https://www.telam.com.ar/rss2/ultimasnoticias.xml'];
             break;           
         case "perfil":
             console.log('entro perfil')
-            URL = 'https://www.perfil.com/feed';
+            URL = ['https://www.perfil.com/feed','https://www.perfil.com/feed/economia',
+           'https://www.perfil.com/feed/politica'
+            ];
             break;    
-            case "perfildeportes":
+        case "perfildeportes":
                 console.log('entro perfil')
-                URL = 'https://www.perfil.com/feed/deportes';
+                URL = ['https://www.perfil.com/feed/deportes'];
                 break;    
         
         default:
@@ -30,13 +35,15 @@ const parseInfo = async (source) => {
     
     if ( URL.length>0 ) {
         let feed = ""
-        feed = await parser.parseURL(URL)
+        for ( const elem of URL) {
+        feed = await parser.parseURL(elem)
         feed.items.map( elem => articles.push( 
             {title : `${elem.title}`,
             content: `${elem.content}`,
             source: `${feed.title}`
         }))
-        
+        }
+        console.log(articles)
         return articles
     } else return ('source not valid')
 }

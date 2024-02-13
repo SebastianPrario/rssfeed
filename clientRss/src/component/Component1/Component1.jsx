@@ -11,7 +11,7 @@ const Component1 = ({notes}) => {
     let altura = 1000
     
     if(divContext.current) { altura = (divContext.current.offsetHeight)}
-   
+    console.log(altura)
     const tl = gsap.timeline({repeat: -1});
    
     tl.to(divContext.current, {
@@ -20,7 +20,7 @@ const Component1 = ({notes}) => {
     })
    
     tl.to(divContext.current, {
-        duration: altura>1000  ? 500 : 100 ,
+        duration: altura>1000  ? altura/30 : 100 ,
         y: -altura,
         ease: "none"
     }) 
@@ -35,8 +35,8 @@ const Component1 = ({notes}) => {
  return (
         <div className={styles.component1}>
             <div className='row bg-primary z-3 '> 
-                <h5 className='text-center fs-1 bg-primary z-3 text-white'>titulares SP</h5>
-                <p className='text-center fs-4 text-white'>{source}</p>
+                <h5 className='text-center fs-1 bg-primary z-3 text-white'>titulares</h5>
+               
             </div>
             <div className='row'>
                 <div  className='pt-4' id="miDiv" ref={divContext}>
@@ -46,6 +46,7 @@ const Component1 = ({notes}) => {
                         className='px-5'>
                             <hr></hr>
                         <p className='text-primary text-center px-5 fs-1'><b>{elem?.title}</b></p>
+                        <p className='text-center fs-6'>{source}</p>
                     </div>)}
                 </div>
             </div>
