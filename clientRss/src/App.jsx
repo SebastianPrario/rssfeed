@@ -56,13 +56,13 @@ function App() {
       }
       <div className='row'>
       { notes2.length<2 ? <div> <p>esperando...</p> </div> :  
-        ( <div className='col-6'>
+        ( <div className='col-8'>
             <Component2
             notes2  = {notes2}  />
           </div> 
         )
       }
-      <div className='col-6 bg-danger'>
+      <div className='col-4 bg-danger'>
         <div className='text-center'>
            <p className='display-4'> publicite aqui</p>
         </div>

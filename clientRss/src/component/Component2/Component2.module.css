@@ -1,8 +1,15 @@
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding-top: 5%;
+    padding-right: 2%;
     align-items: start;
     background-color:rgb(234, 230, 230);
     height: 100vh ;
 
+}
+
+.img {
+    object-fit: cover;
+    max-width: 50%;
 }

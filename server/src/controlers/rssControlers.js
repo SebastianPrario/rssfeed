@@ -1,3 +1,4 @@
+const shuffleArray = require ('../utils/shuffle')
 let Parser = require ('rss-parser')
 
 const parseInfo = async (source) => {
@@ -36,15 +37,24 @@ const parseInfo = async (source) => {
     if ( URL.length>0 ) {
         let feed = ""
         for ( const elem of URL) {
-        feed = await parser.parseURL(elem)
-        feed.items.map( elem => articles.push( 
-            {title : `${elem.title}`,
-            content: `${elem.content}`,
-            source: `${feed.title}`
-        }))
+            feed = await parser.parseURL(elem)
+
+                
+                feed.items.map( elem =>{ 
+                  
+                    articles.push( 
+                    {
+                        title : `${elem.title}`,
+                        content: `${elem.content}`,
+                        link: `${elem.link}`,
+                        source: `${feed.title}`,
+                        enclosure : `${JSON.stringify(elem.enclosure)}`
+                    }
+                )
+               }
+            )
         }
-        console.log(articles)
-        return articles
+        return shuffleArray(articles)
     } else return ('source not valid')
 }
 
