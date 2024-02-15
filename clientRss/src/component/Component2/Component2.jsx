@@ -30,7 +30,8 @@ const Component2 =  ({notes2})  => {
     <div className={styles.container}>
             <div  className='col-6 me-1 mt-1 text-center'>
                 <a className='link-offset-2 link-underline link-underline-opacity-0' href={link}>
-                   <p className='display-7 md-display-6 text-align-center'><b>{title}</b></p>
+                   <p className='d-flex d-md-none display-7 sm-4 text-align-center'><b>{title}</b></p>
+                   <p className='d-none d-md-flex display-6 sm-4 text-align-center'><b>{title}</b></p>
                 </a>
                 <p>{source}</p>
             </div>

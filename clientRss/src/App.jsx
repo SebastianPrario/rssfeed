@@ -3,6 +3,8 @@ import axios from 'axios'
 import Component1 from './component/Component1/Component1'
 import Component2 from './component/Component2/Component2';
 import styles from './App.module.css'
+import Spinner from './component/Spinner/Spinner';
+import Component3 from './component/Component3/Component3';
 
 function App() {
    
@@ -48,14 +50,16 @@ function App() {
   return (
     <div className={styles.container}>
       
-      { notes.length<2 ? <div className={styles.component1}> <p>esperando...</p> </div> :  
+      { notes.length<2 ? <div className={styles.component1}> <Spinner/> </div> :  
         ( <div className={styles.component1}>
             <Component1  notes  = {notes}  /> 
           </div>
         )
       }
       <div className='row'>
-      { notes2.length<2 ? <div> <p>esperando...</p> </div> :  
+      { notes2.length<2 ?<div className='col-8'>
+            <Spinner/>
+          </div>  :  
         ( <div className='col-8'>
             <Component2
             notes2  = {notes2}  />
@@ -63,9 +67,7 @@ function App() {
         )
       }
       <div className='col-4 bg-danger'>
-        <div className='text-center'>
-           <p className='display-4'> publicite aqui</p>
-        </div>
+       <Component3/>
       </div>
       </div>
     </div>
