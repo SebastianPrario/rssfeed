@@ -1,11 +1,12 @@
 const shuffleArray = require ('../utils/shuffle')
+
+
 let Parser = require ('rss-parser')
 
 const parseInfo = async (source) => {
     let parser = new Parser()
     const articles = []
-    URL = ""
-    console.log(source.source)
+    let URL = ""
     switch (source.source) {
         case "clarin":
             console.log('entro clarin')
@@ -34,6 +35,11 @@ const parseInfo = async (source) => {
           
     }
     
+ 
+
+
+
+
     if ( URL.length>0 ) {
         let feed = ""
         for ( const elem of URL) {
