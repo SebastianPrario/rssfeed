@@ -1,14 +1,24 @@
-const { error } = require('console')
-const fs = require ('fs')
+const { unZip} = require ('../utils/getWeather.js')
 
 const climaInfo = async (ciudad) => {
+    let datos = await  unZip()
+    setInterval( async () =>
+    {
+     try{
+     datos = await unZip()
+     console.log('recargando estado del tiempo')
+     return datos
+     }catch (error) {console.log(error)}
+     }, 50000)
+
+
     try {
     const nuevoarray = []
-    let data = fs.readFileSync( __dirname + './../utils/tiempo.txt', 'utf-8')
-    const arrayData = data.split('/ \r\n ')
+    
+    const arrayData = datos ? datos.split('/ \r\n ') : ""
     arrayData.forEach( elem => {
         const datos =  elem.split(';');
-            console.log(datos)
+           
             nuevoarray.push({
                 ciudad: datos[0],
                 fecha: datos[1],
