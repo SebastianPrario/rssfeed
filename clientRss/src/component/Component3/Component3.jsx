@@ -3,10 +3,26 @@ import WeatherComponent from '../../WeatherComponent/WeatherComponent';
 
 const Component3 = () => {
     return( 
-    <div>
-      <WeatherComponent/>
-    </div>)
+        <div id="carouselExampleSlidesOnly" 
+         data-ride="carousel" data-interval="6000"
+         class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+               <WeatherComponent/>
+            </div>
+            <div class="carousel-item text-center ">
+              <p className='fs-4 text-white'>PUBLICITE AQUI</p>
+            </div>
+            <div class="carousel-item text-center bg-white vh-100 ">
+               <p className='fs-4 text-primary'>PUBLICITE AQUI</p>
+            </div>
+        </div>
+    </div>
+    )
 }
+
+   
+
 
 export default Component3;
 

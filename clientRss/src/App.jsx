@@ -57,16 +57,16 @@ function App() {
         )
       }
       <div className='row'>
-      { notes2.length<2 ?<div className='col-8'>
+      { notes2.length<2 ?<div className='col-6 md-col-8 pe-0'>
             <Spinner/>
           </div>  :  
-        ( <div className='col-8'>
+        ( <div className='col-6 md-col-8 pe-0'>
             <Component2
             notes2  = {notes2}  />
           </div> 
         )
       }
-      <div className='col-4 bg-danger'>
+      <div className='col-6 md-col-4 ps-0'>
        <Component3/>
       </div>
       </div>
