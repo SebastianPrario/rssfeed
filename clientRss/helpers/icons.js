@@ -13,31 +13,31 @@ const icons = (icon) => {
     const hora = obtenerHoraActual()
     switch (icon) {
              case 'Algo nublado' :
-                icon= '../assets/icons/partly-cloudy-day.svg'
+                icon= '../../assets/icons/partly-cloudy-day.svg'
                 console.log('entra en nublado')
                 break;
             case 'Parcialmente nublado':
-                    icon= '../assets/icons/cloudy.svg'
+                    icon= '../../assets/icons/cloudy.svg'
                     console.log('entra en nublado')
                     break;
             case 'Nublado' || 'Cubierto':
-                icon= '../assets/icons/cloudy.svg'
+                icon= '../../assets/icons/cloudy.svg'
                 break;
             case 'Despejado'|| hora<18:
-                icon= '../assets/icons/clear-day.svg'
+                icon= '../../assets/icons/clear-day.svg'
                 break;
             case 'Despejado'|| hora>18:
-                    icon= '../assets/icons/clear-night.svg'
+                    icon= '../../assets/icons/clear-night.svg'
                     break;    
             case 'Cubierto con neblina':
-                icon= '../assets/icons/fog.svg'
+                icon= '../../assets/icons/fog.svg'
                 break;
                 case 'Cubierto con llovizna':
-                    icon= '../assets/icons/rain.svg'
+                    icon= '../../assets/icons/rain.svg'
                     break;
 
         default:
-            icon='../assets/icons/not-available.svg'
+            icon='../../assets/icons/not-available.svg'
             break;
     }
     return icon
