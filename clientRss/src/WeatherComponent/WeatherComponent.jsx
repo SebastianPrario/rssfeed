@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import icons from '../../helpers/icons';
+import icons from './icons';
 import celcius from '../../assets/icons/celsius.svg'
-import styles from './WeatherComponent.module.css'
 import Spinner from '../../src/component/Spinner/Spinner';
 
 const URL = (import.meta.env.VITE_REACT_API_WEATHER)
@@ -25,7 +24,7 @@ const WeatherComponent = () => {
       
     },[weather])
   
-   
+   console.log(icon)
 
     return ( 
          (Object.keys(weather).length===0)  ? <Spinner/> :
@@ -33,7 +32,7 @@ const WeatherComponent = () => {
         <section className="vh-100 bg-primary pt-5 pt-md-3">
             <div className="container  h-100 ">
                 <div className="row d-flex h-100">
-                    <div className="col-12 col-xl-10 ms-md-4 ">
+                    <div className="col-12 col-md-11 col-xl-11 md-1 ">
                         <div className="card bg-white my-auto ps-md-5 ms-md-5 mt-2 mt-md-4 " style={{ "border-radius": "35px"}}>
                             <div className="card-body ">
                                 <div className="d-flex">
