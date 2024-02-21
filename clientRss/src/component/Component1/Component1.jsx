@@ -11,7 +11,7 @@ const Component1 = ({notes}) => {
     let altura = 1000
     
     if(divContext.current) { altura = (divContext.current.offsetHeight)}
-    console.log(altura)
+   
     const tl = gsap.timeline({repeat: -1});
    
     tl.to(divContext.current, {
@@ -20,7 +20,7 @@ const Component1 = ({notes}) => {
     })
    
     tl.to(divContext.current, {
-        duration: altura>1000  ? altura/30 : 100 ,
+        duration: altura>1000  ? altura/30 : 1000 ,
         y: -altura,
         ease: "none"
     }) 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import icons from './icons';
 import celcius from '../../assets/icons/celsius.svg'
+import tiempo from '../../assets/icons/partly-cloudy-day.svg'
 import Spinner from '../../src/component/Spinner/Spinner';
 
 const URL = (import.meta.env.VITE_REACT_API_WEATHER)
@@ -41,7 +42,7 @@ const WeatherComponent = () => {
                                 </div>
                                 <div className="d-flex flex-row justify-content-center text-center mt-4 mb-2">
                                     <div className='d-none d-md-flex me-4'>
-                                        <img src={icon} width="100px"/>
+                                        <img src={tiempo} width="100px"/>
                                     </div>
                                     <div className='d-flex'>
                                         <div>
