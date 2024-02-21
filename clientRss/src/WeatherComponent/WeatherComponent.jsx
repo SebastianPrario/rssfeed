@@ -42,8 +42,7 @@ const WeatherComponent = () => {
                                 </div>
                                 <div className="d-flex flex-row justify-content-center text-center mt-4 mb-2">
                                     <div className='d-none d-md-flex me-4'>
-                                        <img src='../../
-                                        ../assets/icons/partly-cloudy-day.svg' width="100px"/>
+                                        <img src={icon} width="100px"/>
                                     </div>
                                     <div className='d-flex'>
                                         <div>
