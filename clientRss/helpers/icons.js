@@ -35,6 +35,9 @@ const icons = (icon) => {
             case 'Cubierto con llovizna':
                 icon= '/icons/rain.svg'
                 break;
+            case 'Cubierto con lluvia':
+                icon= '/icons/rain.svg'
+                break;
             case 'Nublado con lluvia':
                 icon= '/icons/rain.svg'
                 break;  
