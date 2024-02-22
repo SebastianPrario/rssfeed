@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import icons from './icons';
+import icons from './../../helpers/icons';
 import celcius from '/icons/celsius.svg'
 import Spinner from '../../src/component/Spinner/Spinner';
 
@@ -17,16 +17,18 @@ const WeatherComponent = () => {
     }
 
     useEffect(() => {
-    getWeather()
+        getWeather()
+        setInterval( () => {
+            getWeather
+          },600000)
+        
     }, [])
     useEffect (() => {
        weather && setIcon(icons(weather.estado))
       
     },[weather])
   
-   console.log(icon)
-
-    return ( 
+   return ( 
          (Object.keys(weather).length===0)  ? <Spinner/> :
         (<div>
         <section className="vh-100 bg-primary pt-5 pt-md-3">
@@ -61,7 +63,7 @@ const WeatherComponent = () => {
                     <div>
                         <i className="fas fa-tint fa-fw"></i> 
                         <span className="ms-1">
-                        Termica: {(weather.termica)==="No se calcula" ? weather.temperatura : weather.termica} 
+                        Térmica: {(weather.termica)==="No se calcula" ? weather.temperatura : weather.termica} °c
                         </span>
                     </div>
                     <div>
