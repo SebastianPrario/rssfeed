@@ -17,7 +17,7 @@ const Component3 = () => {
         <div className='carousel-item text-center '>
           <p className='fs-4 text-white'>PUBLICITE AQUI</p>
         </div>
-        <div className='carousel-item active'>
+        <div className='carousel-item '>
           <GetTime />
         </div>
         <div className='carousel-item'>
