@@ -5,15 +5,15 @@ const Component3 = () => {
     return( 
         <div id="carouselExampleSlidesOnly" 
          data-ride="carousel" data-interval="6000"
-         class="carousel slide " data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
+         className="carousel slide " data-bs-ride="carousel">
+        <div className="carousel-inner">
+            <div className="carousel-item active">
                <WeatherComponent/>
             </div>
-            <div class="carousel-item text-center ">
+            <div className="carousel-item text-center ">
               <p className='fs-4 text-white'>PUBLICITE AQUI</p>
             </div>
-            <div class="carousel-item text-center bg-white vh-100 ">
+            <div className="carousel-item text-center bg-white vh-100 ">
                <p className='fs-4 text-primary'>PUBLICITE AQUI</p>
             </div>
         </div>

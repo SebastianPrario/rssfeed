@@ -20,7 +20,7 @@ const WeatherComponent = () => {
         getWeather()
         setInterval( () => {
             getWeather
-          },600000)
+          },100000)
         
     }, [])
     useEffect (() => {
@@ -35,7 +35,7 @@ const WeatherComponent = () => {
             <div className="container  h-100 ">
                 <div className="row d-flex h-100">
                     <div className="col-12 col-md-11 col-xl-11 md-1 ">
-                        <div className="card bg-white my-auto ps-md-5 ms-md-5 mt-2 mt-md-4 " style={{ "border-radius": "35px"}}>
+                        <div className="card bg-white my-auto ps-md-5 ms-md-5 mt-2 mt-md-4 " style={{ "borderRadius": "35px"}}>
                             <div className="card-body ">
                                 <div className="d-flex">
                                     <h6 className="flex-grow-1 text-center text-md-start">{weather.ciudad}</h6>

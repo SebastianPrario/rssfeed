@@ -14,17 +14,18 @@ const Component1 = ({notes}) => {
    
     const tl = gsap.timeline({repeat: -1});
    
-    tl.to(divContext.current, {
+    divContext.current && tl.to(divContext?.current, {
         duration: 0,
         y: 200,
     })
    
-    tl.to(divContext.current, {
+    divContext.current && tl.to(divContext && divContext.current, {
         duration: altura>1000  ? altura/30 : altura,
         y: -altura,
         ease: "none"
     }) 
    
+  
     useEffect (()=>{
         !!notes &&  
         setArticle(notes)

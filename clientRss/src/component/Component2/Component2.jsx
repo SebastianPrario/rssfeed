@@ -1,4 +1,4 @@
-import  { useRef, useState , React, useEffect, useReducer } from 'react';
+import  { useState , React, useEffect} from 'react';
 import styles from './Component2.module.css'
 
 
@@ -6,7 +6,7 @@ import styles from './Component2.module.css'
 const Component2 =  ({notes2})  => {
  
     const [ title , setTitle ] = useState ()
-    const [ content , setContent ] = useState ()
+    const [ , setContent ] = useState ()
     const [ source , setSource ] = useState ()
     const [ image , setImage ] = useState ()
     const [ link , setLink ] = useState ()
@@ -24,7 +24,7 @@ const Component2 =  ({notes2})  => {
         },7000);
     }
     
-    useEffect (() => slider() ,[position])
+    useEffect (() => slider() ,[])
 
     return (
     <div className={styles.container}>
