@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import icons from './../../helpers/icons'
-import celcius from './../../public/icons/celsius.svg'
+import celcius from './../asset/celsius.svg'
 import Spinner from '../../src/component/Spinner/Spinner'
 import useGetData from '../Hook/useGetData'
 

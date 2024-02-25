@@ -5,13 +5,15 @@ import gsap from 'gsap'
 const Component1 = ({ notes }) => {
   const [article, setArticle] = useState()
   const [source, setSource] = useState()
+  const [altura, setAltura] = useState()
   const divContext = useRef()
-  let altura = 1000
-
-  if (divContext.current) { altura = (divContext.current.offsetHeight) }
+  const getAltura = () => {
+    if (divContext.current.offsetHeight) {
+      setAltura(divContext.current.offsetHeight)
+    }
+  }
 
   const tl = gsap.timeline({ repeat: -1 })
-
   divContext.current && tl.to(divContext?.current, {
     duration: 0,
     y: 200
@@ -29,6 +31,9 @@ const Component1 = ({ notes }) => {
     setSource(notes[0].source)
   }, [notes])
 
+  useEffect(() => {
+    getAltura()
+  }, [article])
   return (
     <div className={styles.component1}>
       <div className='row bg-primary z-3 '>
