@@ -13,16 +13,35 @@ const WeatherComponent = () => {
     
     const getWeather = async () =>{
         const getWeather =  await (await axios.get(`${URL}?ciudad=Mar del Plata`)).data
+        console.log('buscando clima')
         setWeather(getWeather[0])
     }
 
+    const setWeatherInterval = async () => {
+
+        setInterval(async () => {
+            const getWeather =  await (await axios.get(`${URL}?ciudad=Mar del Plata`)).data
+           
+            setWeather(getWeather[0])
+        }, 300000);
+
+    }
     useEffect(() => {
-        getWeather()
-        setInterval( () => {
-            getWeather
-          },100000)
-        
+       getWeather()
+             
     }, [])
+    
+    useEffect(() => {
+       
+       setWeatherInterval() 
+    }, [])
+
+
+
+
+
+
+
     useEffect (() => {
        weather && setIcon(icons(weather.estado))
       
