@@ -28,10 +28,10 @@ function App() {
     try {
     const articles2 = await (await axios.get(URL2)).data
     articles2 && setNotes2(articles2)
-    }catch (error) { console.log('error conexion con el servidor')}
+        }catch (error) { console.log('error conexion con el servidor')}
 
   }
-
+ 
   const articles = async () =>{
   try{
   const articles = await (await axios.get(URL)).data
