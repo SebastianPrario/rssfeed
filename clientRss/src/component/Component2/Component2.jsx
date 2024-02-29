@@ -1,34 +1,39 @@
 import { useState, React, useEffect } from 'react'
 import styles from './Component2.module.css'
 
-const Component2 = ({ notes2 }) => {
-  const [article, setArticle] = useState(0)
-  const slider = () => {
-    if (!article.position) {
-      setArticle({
-        title: notes2[0].title,
-        source: notes2[0].source,
-        content: notes2[0].content,
-        link: notes2[0].link,
-        image: notes2[0].enclosure.split('"')[3],
-        position: +1
-      })
-    } else {
-      setTimeout(() => {
-        setArticle({
-          title: notes2[article.position].title,
-          source: notes2[article.position].source,
-          content: notes2[article.position].content,
-          enclosure: notes2[article.position].enclosure,
-          link: notes2[article.position].link,
-          image: notes2[article.position].enclosure.split('"')[3],
-          position: article.position + 1
-        })
-      }, 7000)
-    }
-  }
 
-  useEffect(() => slider(), [article])
+
+const Component2 =  ({notes2})  => {
+    
+    const [ title , setTitle ] = useState ()
+    const [ , setContent ] = useState ()
+    const [ source , setSource ] = useState ()
+    const [ image , setImage ] = useState ()
+    const [ link , setLink ] = useState ()
+    const [ position , setPosition ]  =useState (0)
+
+    const slider = () => {
+        if( position === notes2.length) return  setPosition(0) 
+        if (position===0) {
+            setTitle(notes2[position].title)
+            setContent(notes2[position].content)
+            setSource(notes2[position].source)
+            setLink(notes2[position].link)
+            setImage(notes2[position].enclosure.split('"')[3])
+            setPosition(position+1)
+        }
+         setTimeout(() => {
+          
+            setTitle(notes2[position].title)
+            setContent(notes2[position].content)
+            setSource(notes2[position].source)
+            setLink(notes2[position].link)
+            setImage(notes2[position].enclosure.split('"')[3])
+            setPosition(position+1)
+        },7000);
+    }
+    
+    useEffect (() => slider() ,[])
 
   return (
     <div className={styles.container}>
