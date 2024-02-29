@@ -27,6 +27,10 @@ const GetCotizacion = () => {
           {dolarCoti && <p className='ms-2 text-white fs-4'>venta: $ {dolarCoti.oficial.value_sell}</p>}
           {dolarCoti && <p className='ms-2 text-white fs-4'>compra: $ {dolarCoti.oficial.value_buy}</p>}
         </div>
+
+      </div>
+      <div>
+        <p className='ms-3 text-white fs-7 text-center'> última actualización: {dolarCoti?.last_update.slice(0, 19).split('T')[1]} - {dolarCoti?.last_update.slice(0, 19).split('T')[0]}</p>
       </div>
     </div>
 
