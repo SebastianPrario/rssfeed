@@ -6,7 +6,7 @@ import GetTime from '../../GetTime/GetTime'
 
 const Component3 = () => {
   return (
-    <Carousel controls={false} interval={6000}>
+    <Carousel controls={false} indicators={false} interval={6000}>
       <Carousel.Item>
         <WeatherComponent />
       </Carousel.Item>
