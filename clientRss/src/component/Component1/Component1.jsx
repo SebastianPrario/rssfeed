@@ -3,12 +3,16 @@ import styles from './Component1.module.css'
 import gsap from 'gsap'
 
 const Component1 = ({ notes }) => {
+  const [altura, setAltura] = useState()
   const [article, setArticle] = useState()
   const [source, setSource] = useState()
   const divContext = useRef()
-  let altura = 1000
 
-  if (divContext.current) { altura = (divContext.current.offsetHeight) }
+  const getAltura = () => {
+    if (divContext.current.offsetHeight) {
+      setAltura(divContext.current.offsetHeight)
+    }
+  }
 
   const tl = gsap.timeline({ repeat: -1 })
 
@@ -28,6 +32,10 @@ const Component1 = ({ notes }) => {
         setArticle(notes)
     setSource(notes[0].source)
   }, [notes])
+
+  useEffect(() => {
+    getAltura()
+  }, [article])
 
   return (
     <div className={styles.component1}>
