@@ -7,7 +7,7 @@ const Component3 = () => {
   return (
     <div
       id='carouselExampleSlidesOnly'
-      data-ride='carousel' data-interval='6000'
+      data-ride='carousel' data-interval='6000' data-bs-touch='true'
       className='carousel slide ' data-bs-ride='carousel'
     >
       <div className='carousel-inner'>
