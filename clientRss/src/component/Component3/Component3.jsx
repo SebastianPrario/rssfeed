@@ -1,11 +1,14 @@
 import React from 'react'
 import WeatherComponent from '../../WeatherComponent/WeatherComponent'
+import GetQuote from '../../GetQuote/GetQuote'
+import GetTime from '../../GetTime/GetTime'
+
 
 const Component3 = () => {
   return (
-    <div
+  <div
       id='carouselExampleSlidesOnly'
-      data-ride='carousel' data-interval='6000' data-bs-touch='true'
+      data-bs-interval='6000' data-bs-touch='true'
       className='carousel slide ' data-bs-ride='carousel'
     >
       <div className='carousel-inner'>
@@ -13,10 +16,13 @@ const Component3 = () => {
           <WeatherComponent />
         </div>
         <div className='carousel-item text-center '>
-          <p className='fs-4 text-white'>PUBLICITE AQUI</p>
+          <GetQuote />
         </div>
         <div className='carousel-item text-center bg-white vh-100 '>
           <p className='fs-4 text-primary'>PUBLICITE AQUI</p>
+        </div>
+        <div className='carousel-item text-center bg-white vh-100 '>
+          <GetTime />
         </div>
       </div>
     </div>
