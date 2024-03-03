@@ -10,9 +10,9 @@ import useGetData from './Hook/useGetData'
 function App () {
   const URL = (import.meta.env.VITE_REACT_API_URL)
   const URL2 = (import.meta.env.VITE_REACT_API_URL2)
-  
-  const { data : articulo1, isloading } = useGetData(URL, 600000)
-  const { data : articulo2, isloading : isloading2 } = useGetData(URL2, 600000)
+
+  const { data: articulo1, isloading } = useGetData(URL, 600000)
+  const { data: articulo2, isloading: isloading2 } = useGetData(URL2, 600000)
 
   return (
     <div className={styles.container}>

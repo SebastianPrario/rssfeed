@@ -1,12 +1,29 @@
 import React from 'react'
+import Carousel from 'react-bootstrap/Carousel'
 import WeatherComponent from '../../WeatherComponent/WeatherComponent'
 import GetQuote from '../../GetQuote/GetQuote'
 import GetTime from '../../GetTime/GetTime'
 
-
 const Component3 = () => {
   return (
-  <div
+    <Carousel controls={false} interval={6000}>
+      <Carousel.Item>
+        <WeatherComponent />
+      </Carousel.Item>
+      <Carousel.Item>
+        <GetQuote />
+      </Carousel.Item>
+      <Carousel.Item>
+        <GetTime />
+      </Carousel.Item>
+
+    </Carousel>
+  )
+}
+
+export default Component3
+
+{ /* <div
       id='carouselExampleSlidesOnly'
       data-bs-interval='6000' data-bs-touch='true'
       className='carousel slide ' data-bs-ride='carousel'
@@ -26,19 +43,4 @@ const Component3 = () => {
         </div>
       </div>
     </div>
-  )
-}
-
-export default Component3
-
-{ /* <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
-<div className="carousel-inner">
-    <WeatherComponent />
-    <div className="carousel-item">
-        <p className='display-4 mt-4 text-white'> Publicite<br></br> aqui</p>
-    </div>
-    <div className="carousel-item">
-         <p className='display-4 mt-4 text-dark'> Publicite<br></br> aqui</p>
-    </div>
-</div>
-</div> */ }
+  ) */ }
