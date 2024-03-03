@@ -3,9 +3,10 @@ import WeatherComponent from '../../WeatherComponent/WeatherComponent'
 import GetQuote from '../../GetQuote/GetQuote'
 import GetTime from '../../GetTime/GetTime'
 
+
 const Component3 = () => {
   return (
-    <div
+  <div
       id='carouselExampleSlidesOnly'
       data-bs-interval='6000' data-bs-touch='true'
       className='carousel slide ' data-bs-ride='carousel'
