@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
 import Component1 from './component/Component1/Component1'
 import Component2 from './component/Component2/Component2'
 import styles from './App.module.css'
 import Spinner from './component/Spinner/Spinner'
 import Component3 from './component/Component3/Component3'
 import useGetData from './Hook/useGetData'
+import { Analytics } from "@vercel/analytics/react"
 
 function App () {
   const URL = (import.meta.env.VITE_REACT_API_URL)
@@ -16,7 +15,7 @@ function App () {
 
   return (
     <div className={styles.container}>
-
+      <Analytics/>
       {isloading
         ? <div className={styles.component1}> <Spinner /> </div>
         : (<div className={styles.component1}>
