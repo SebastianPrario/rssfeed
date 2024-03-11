@@ -3,39 +3,33 @@ import styles from './Component1.module.css'
 import gsap from 'gsap'
 
 const Component1 = ({ notes }) => {
-  const [altura, setAltura] = useState()
+  const [altura, setAltura] = useState(3000)
   const [article, setArticle] = useState()
   const [source, setSource] = useState()
   const divContext = useRef()
-
-  const getAltura = () => {
-    if (divContext.current.offsetHeight) {
-      setAltura(divContext.current.offsetHeight)
-    }
-  }
-
+  //console.log(divContext.current.offsetHeight )
   const tl = gsap.timeline({ repeat: -1 })
 
-  divContext.current && tl.to(divContext?.current, {
+  divContext.current && tl.to(divContext.current, {
     duration: 0,
     y: 200
   })
 
   divContext.current && tl.to(divContext && divContext.current, {
-    duration: altura > 1000 ? altura / 30 : altura,
-    y: -altura,
+    duration: altura * 0.5,
+    y: -altura * 9.226,
     ease: 'none'
   })
 
   useEffect(() => {
     !!notes &&
-        setArticle(notes)
+    setArticle(notes)
     setSource(notes[0].source)
   }, [notes])
 
   useEffect(() => {
-    getAltura()
-  }, [article])
+    setAltura(notes.length * 50)
+  }, [notes])
 
   return (
     <div className={styles.component1}>

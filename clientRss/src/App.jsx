@@ -4,7 +4,7 @@ import styles from './App.module.css'
 import Spinner from './component/Spinner/Spinner'
 import Component3 from './component/Component3/Component3'
 import useGetData from './Hook/useGetData'
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
 
 function App () {
   const URL = (import.meta.env.VITE_REACT_API_URL)
