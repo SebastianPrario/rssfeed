@@ -7,7 +7,7 @@ const Component1 = ({ notes }) => {
   const [article, setArticle] = useState()
   const [source, setSource] = useState()
   const divContext = useRef()
-
+  //console.log(divContext.current.offsetHeight )
   const tl = gsap.timeline({ repeat: -1 })
 
   divContext.current && tl.to(divContext.current, {
@@ -16,8 +16,8 @@ const Component1 = ({ notes }) => {
   })
 
   divContext.current && tl.to(divContext && divContext.current, {
-    duration: altura * 0.12,
-    y: -altura * 5.1,
+    duration: altura * 0.5,
+    y: -altura * 9.226,
     ease: 'none'
   })
 

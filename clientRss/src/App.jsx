@@ -4,13 +4,13 @@ import styles from './App.module.css'
 import Spinner from './component/Spinner/Spinner'
 import Component3 from './component/Component3/Component3'
 import useGetData from './Hook/useGetData'
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
 
 function App () {
   const URL = (import.meta.env.VITE_REACT_API_URL)
   const URL2 = (import.meta.env.VITE_REACT_API_URL2)
 
-  const { data: articulo1, isloading } = useGetData(URL, 6000)
+  const { data: articulo1, isloading } = useGetData(URL, 600000)
   const { data: articulo2, isloading: isloading2 } = useGetData(URL2, 600000)
 
   return (

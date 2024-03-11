@@ -30,7 +30,7 @@ const Component2 = ({ notes2 }) => {
       setLink(notes2[position].link)
       setImage(notes2[position].enclosure.split('"')[3])
       setPosition(position + 1)
-    }, 5000)
+    }, 7000)
   }
 
   useEffect(() => slider(), [position])
