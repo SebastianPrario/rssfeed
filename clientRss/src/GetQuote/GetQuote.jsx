@@ -1,5 +1,5 @@
-import React from 'react'
-import useGetData from '../Hook/useGetData'
+import React from 'react';
+import useGetData from '../Hook/useGetData';
 import styles from './GetQuote.module.css'
 import Spinner from '../component/Spinner/Spinner'
 
