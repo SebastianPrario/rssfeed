@@ -1,5 +1,5 @@
 import { useState, React, useEffect } from 'react'
-//import styles from './Component2.module.css'
+import styles from './Component2.module.css'
 
 const Component2 = ({ notes2 }) => {
   const [title, setTitle] = useState()
