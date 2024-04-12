@@ -15,23 +15,26 @@ function App () {
 
   return (
     <div className={styles.container}>
-      <Analytics/>
+      <Analytics />
       {isloading
         ? <div className={styles.component1}> <Spinner /> </div>
-        : (<div className={styles.component1}>
-          <Component1 notes={articulo1} />
-        </div>
+        : (
+          <div className={styles.component1}>
+            <Component1 notes={articulo1} />
+          </div>
           )}
       <div className='row'>
         {isloading2
-          ? <div className='col-6 md-col-8 pe-0'>
-            <Spinner />
+          ? (
+            <div className='col-6 md-col-8 pe-0'>
+              <Spinner />
+            </div>)
+          : (
+            <div className='col-6 md-col-8 pe-0'>
+              <Component2
+                notes2={articulo2}
+              />
             </div>
-          : (<div className='col-6 md-col-8 pe-0'>
-            <Component2
-              notes2={articulo2}
-            />
-          </div>
             )}
         <div className='col-6 md-col-4 ps-0'>
           <Component3 />
