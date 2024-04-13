@@ -3,15 +3,15 @@ import Spinner from '../../src/component/Spinner/Spinner'
 import styles from './WeatherComponent.module.css'
 import useGetData from '../Hook/useGetData'
 
-const URL = 'https://my.meteoblue.com/packages/current?apikey=t1MhpHy0fsBUNi8g&lat=-38.0004&lon=-57.5562&asl=14&format=json'
 
+const URL = 'https://my.meteoblue.com/packages/current?apikey=t1MhpHy0fsBUNi8g&lat=-38.0004&lon=-57.5562&asl=14&format=json'
 const WeatherComponent = () => {
   const { data, isloading } = useGetData(URL, 600000)
   let dayLight = 'day'
   if (data.data_current && data.data_current.isdaylight === 0) dayLight = 'night'
 
-  const weatherImg = data.data_current ? `../../public/svg/0${data.data_current.pictocode}_${dayLight}.svg` : ''
-
+  const weatherImg = data.data_current ? `/0${data.data_current.pictocode}_${dayLight}.svg` : ''
+  console.log(weatherImg)
   return (
     (isloading)
       ? <Spinner />

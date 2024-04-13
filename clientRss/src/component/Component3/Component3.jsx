@@ -10,12 +10,12 @@ const Component3 = () => {
       <Carousel.Item>
         <WeatherComponent />
       </Carousel.Item>
-      <Carousel.Item>
+      {/* <Carousel.Item>
         <GetQuote />
       </Carousel.Item>
       <Carousel.Item>
         <GetTime />
-      </Carousel.Item>
+      </Carousel.Item> */}
     </Carousel>
   )
 }
