@@ -32,7 +32,7 @@ const WeatherComponent = () => {
                           <img src={weatherImg} width='150px' />
                         </div>
                         <div className='d-flex  d-md-none flex-row'>
-                          <img src={weatherImg} width='100px' />
+                          <img src={weatherImg} width='90px' />
                         </div>
                         <div className={styles.weatherDiv}>
                           <div>
