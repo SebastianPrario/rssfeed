@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Spinner from '../../src/component/Spinner/Spinner'
 import styles from './WeatherComponent.module.css'
-import useGetData from '../Hook/useGetData'
 import axios from 'axios'
 
 const WeatherComponent = () => {
@@ -32,7 +31,6 @@ const WeatherComponent = () => {
   useEffect(() => {
     getCoords()
   }, [])
-
   const weatherImg = data.data_current ? `/0${data.data_current.pictocode}_${dayLight}.svg` : ''
 
   return (
