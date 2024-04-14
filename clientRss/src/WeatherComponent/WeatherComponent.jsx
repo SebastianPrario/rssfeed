@@ -1,19 +1,42 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Spinner from '../../src/component/Spinner/Spinner'
 import styles from './WeatherComponent.module.css'
 import useGetData from '../Hook/useGetData'
+import axios from 'axios'
 
-
-const URL = 'https://my.meteoblue.com/packages/current?apikey=t1MhpHy0fsBUNi8g&lat=-38.0004&lon=-57.5562&asl=14&format=json'
 const WeatherComponent = () => {
-  const { data, isloading } = useGetData(URL, 600000)
+  const [coords, setCoords] = useState(null)
+  const [location, setLocation] = useState(null)
+  const [data, setData] = useState('')
+  function success (pos) {
+    const crd = pos.coords
+    setCoords({ lat: crd.latitude, lon: crd.longitude, accur: 0 })
+  }
+  function errors (err) { console.warn(`ERROR(${err.code}): ${err.message}`) }
+  const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+
+  const URL = `https://my.meteoblue.com/packages/current?apikey=t1MhpHy0fsBUNi8g&lat=${coords?.lat}&lon=${coords?.lon}&asl=${coords?.accur}&format=json`
+
+  if (!data) {
+    axios(URL)
+      .then((response) => setData(response.data))
+  }
+
+  axios(`https://www.meteoblue.com/en/server/search/query3?query=${coords?.lat}%20${coords?.lon}&apikey=DEMOKEY.`)
+    .then((response) => setLocation(response.data.results[0].name))
+
   let dayLight = 'day'
   if (data.data_current && data.data_current.isdaylight === 0) dayLight = 'night'
 
+  const getCoords = useCallback(() => navigator.geolocation.getCurrentPosition(success, errors, options), [])
+  useEffect(() => {
+    getCoords()
+  }, [])
+
   const weatherImg = data.data_current ? `/0${data.data_current.pictocode}_${dayLight}.svg` : ''
-  console.log(weatherImg)
+
   return (
-    (isloading)
+    (!data)
       ? <Spinner />
       : (
         <div>
@@ -23,7 +46,7 @@ const WeatherComponent = () => {
                 <div className='col-12 col-md-11 col-xl-11 md-1 '>
                   <div className='card bg-white my-auto ps-md-5 ms-md-5 mt-2 mt-md-4 ' style={{ borderRadius: '35px' }}>
                     <div className='card-body '>
-                      <h4 className='mt-2 mx-auto'>El tiempo en Mar del Plata</h4>
+                      <h4 className='mt-2 mx-auto'>El tiempo en {location}</h4>
                       <div className='d-flex flex-row justify-content-center text-center mt-4 mb-2'>
                         <div className='d-none d-xlg-flex me-4'>
                           <img src={weatherImg} width='250px' />
