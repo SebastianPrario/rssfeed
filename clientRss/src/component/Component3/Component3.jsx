@@ -8,9 +8,6 @@ const Component3 = () => {
   return (
     <Carousel controls={false} indicators={false} interval={6000}>
       <Carousel.Item>
-        <WeatherComponent />
-      </Carousel.Item>
-      <Carousel.Item>
         <GetQuote />
       </Carousel.Item>
       <Carousel.Item>
