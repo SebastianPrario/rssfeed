@@ -15,6 +15,7 @@
     @media  (max-width: 1000px) {
       width: 120%;
       height: 90vh;
+      align-items: start;
       margin-left: 0px;
       padding-left: 0px;
       font: 150%/1.5em 'Droid Sans Mono', monospace; 
@@ -22,8 +23,12 @@
       
   }
 }
+.container > p {
+  @media  (max-width: 1000px) {
     
-  
+   margin-left: 25%;   
+  }
+}
 
 .marcoClock {
   background: hsl(0, 18%, 71%);
@@ -36,4 +41,13 @@
   margin: 5% 0 0 0;
   overflow: hidden;
   align-content:center;
+  @media  (max-width: 1000px) {
+    
+    align-items: start;
+    margin-left: 18%;
+    padding-left: 0px;
+    font: 150%/1.5em 'Droid Sans Mono', monospace; 
+   
+    
+}
 }
