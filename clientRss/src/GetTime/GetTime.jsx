@@ -18,9 +18,9 @@ const GetTime = () => {
 
   return (
     <div className={styles.container}>
-        <p className='pt-5 display-6 '>{currentTime.toLocaleDateString()}</p>
+      <p>{currentTime.toLocaleDateString()}</p>
       <div className={styles.marcoClock}>
-        <p className={styles.title}> {currentTime.toLocaleTimeString()}</p>
+      <p className={styles.title}> {currentTime.toLocaleTimeString()}</p>
       </div>
     </div>
   )

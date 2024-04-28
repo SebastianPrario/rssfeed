@@ -4,7 +4,6 @@
     justify-content: start;
     align-items: center;
     padding-left: 0;
-    margin-left: 0px;
     background: #e5d8d8;
     width: 100%;
     height: 70vh;
@@ -13,22 +12,14 @@
     text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);
 
     @media  (max-width: 1000px) {
-      width: 120%;
-      height: 90vh;
-      align-items: start;
-      margin-left: 0px;
+            align-items: center;
+      padding-top: 30%;
       padding-left: 0px;
-      font: 150%/1.5em 'Droid Sans Mono', monospace; 
-     
-      
-  }
+      font: 120%/1.5em 'Droid Sans Mono', monospace; 
+    }
 }
-.container > p {
-  @media  (max-width: 1000px) {
     
-   margin-left: 25%;   
-  }
-}
+  
 
 .marcoClock {
   background: hsl(0, 18%, 71%);
@@ -42,12 +33,6 @@
   overflow: hidden;
   align-content:center;
   @media  (max-width: 1000px) {
-    
-    align-items: start;
-    margin-left: 18%;
-    padding-left: 0px;
-    font: 150%/1.5em 'Droid Sans Mono', monospace; 
-   
-    
+   width: 80%;
 }
 }
