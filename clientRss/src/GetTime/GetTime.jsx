@@ -3,7 +3,6 @@ import styles from './GetTime.module.css'
 
 const GetTime = () => {
   const [currentTime, setCurrentTime] = useState(new Date())
-  console.log(currentTime.toLocaleDateString())
   useEffect(() => {
     // Actualiza la hora cada segundo
     const intervalId = setInterval(() => {
@@ -20,7 +19,7 @@ const GetTime = () => {
     <div className={styles.container}>
       <p>{currentTime.toLocaleDateString()}</p>
       <div className={styles.marcoClock}>
-      <p className={styles.title}> {currentTime.toLocaleTimeString()}</p>
+        <p className={styles.title}> {currentTime.toLocaleTimeString()}</p>
       </div>
     </div>
   )
