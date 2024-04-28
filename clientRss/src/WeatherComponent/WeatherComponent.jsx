@@ -9,7 +9,8 @@ const WeatherComponent = () => {
   const [data, setData] = useState('')
   function success (pos) {
     const crd = pos.coords
-    setCoords({ lat: crd.latitude, lon: crd.longitude, accur: 0 })
+    !coords && setCoords({ lat: crd.latitude, lon: crd.longitude, accur: 0 })
+    coords && localStorage.setItem('CoordsByNoticiasya', JSON.stringify(coords))
   }
   function errors (err) { console.warn(`ERROR(${err.code}): ${err.message}`) }
   const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
@@ -33,6 +34,11 @@ const WeatherComponent = () => {
   }, [])
   const weatherImg = data.data_current ? `/0${data.data_current.pictocode}_${dayLight}.svg` : ''
 
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    const coordLocalStorage = JSON.parse(localStorage.getItem('CoordsByNoticiasya'))
+    coordLocalStorage && setCoords({ lat: coordLocalStorage.lat, lon: coordLocalStorage.lon, accur: 0 })
+  }, [])
   return (
     (!data)
       ? <Spinner />
