@@ -38,7 +38,7 @@ const Component2 = ({ notes2 }) => {
 
   return (
     <div className={styles.container}>
-      <div className='sm-col-12 md-col-6 me-1 mt-1 text-center'>
+      <div className='sm-col-12 md-col-6 me-2 mt-3 text-center'>
         <a className='link-offset-2 link-underline link-underline-opacity-0' href={link}>
           <p className='d-blox d-md-none display-7 text-align-center'><b>{title}</b></p>
           <p className='d-none d-md-block fs-3 text-align-center'><b>{title}</b></p>
