@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import WeatherComponent from '../../WeatherComponent/WeatherComponent'
 import GetQuote from '../../GetQuote/GetQuote'
 import GetTime from '../../GetTime/GetTime'
+import Contact from '../../Contact/Contact'
 
 const Component3 = () => {
   return (
@@ -15,6 +16,9 @@ const Component3 = () => {
       </Carousel.Item>
       <Carousel.Item>
         <GetTime />
+      </Carousel.Item>
+      <Carousel.Item>
+        <Contact />
       </Carousel.Item>
     </Carousel>
   )

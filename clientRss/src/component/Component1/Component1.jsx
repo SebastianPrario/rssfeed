@@ -7,11 +7,9 @@ const Component1 = ({ notes }) => {
   const [article, setArticle] = useState()
   const [source, setSource] = useState()
   const divContext = useRef()
-  // console.log(divContext.current.offsetHeight )
-  const tl = gsap.timeline({ repeat: -1 })
 
-  //console.log(divContext.current.clientHeight)
-  //console.log(altura)
+  const tl = gsap?.timeline({ repeat: -1 })
+
   tl.fromTo(divContext && divContext.current,
     { y: 200,
       ease: 'none'
@@ -21,7 +19,6 @@ const Component1 = ({ notes }) => {
       y: -altura * 4.135,
       ease: 'none'
     })
-  
 
   useEffect(() => {
     !!notes &&

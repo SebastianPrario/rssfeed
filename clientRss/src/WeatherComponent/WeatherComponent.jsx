@@ -10,20 +10,22 @@ const WeatherComponent = () => {
   function success (pos) {
     const crd = pos.coords
     !coords && setCoords({ lat: crd.latitude, lon: crd.longitude, accur: 0 })
-    coords && localStorage.setItem('CoordsByNoticiasya', JSON.stringify(coords))
+    coords && window.localStorage.setItem('CoordsByNoticiasya', JSON.stringify(coords))
   }
   function errors (err) { console.warn(`ERROR(${err.code}): ${err.message}`) }
   const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-
+  
   const URL = `https://my.meteoblue.com/packages/current?apikey=t1MhpHy0fsBUNi8g&lat=${coords?.lat}&lon=${coords?.lon}&asl=${coords?.accur}&format=json`
 
   if (!data) {
     axios(URL)
       .then((response) => setData(response.data))
+      .catch((error) => console.log(error.message))
   }
 
   axios(`https://www.meteoblue.com/en/server/search/query3?query=${coords?.lat}%20${coords?.lon}&apikey=DEMOKEY.`)
-    .then((response) => setLocation(response.data.results[0].name))
+    .then((response) => setLocation(response.data.results[0]?.name))
+    .catch(error => console.log(error.message))
 
   let dayLight = 'day'
   if (data.data_current && data.data_current.isdaylight === 0) dayLight = 'night'
@@ -35,8 +37,7 @@ const WeatherComponent = () => {
   const weatherImg = data.data_current ? `/0${data.data_current.pictocode}_${dayLight}.svg` : ''
 
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    const coordLocalStorage = JSON.parse(localStorage.getItem('CoordsByNoticiasya'))
+    const coordLocalStorage = JSON.parse(window.localStorage.getItem('CoordsByNoticiasya'))
     coordLocalStorage && setCoords({ lat: coordLocalStorage.lat, lon: coordLocalStorage.lon, accur: 0 })
   }, [])
   return (
