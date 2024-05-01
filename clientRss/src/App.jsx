@@ -5,6 +5,9 @@ import Spinner from './component/Spinner/Spinner'
 import Component3 from './component/Component3/Component3'
 import useGetData from './Hook/useGetData'
 import { Analytics } from '@vercel/analytics/react'
+import { useContext } from 'react'
+import AuthContext from './auth/AuthContext/AuthContext'
+import NavBar from './NavBar/NavBar'
 
 function App () {
   const URL = (import.meta.env.VITE_REACT_API_URL)
@@ -13,6 +16,14 @@ function App () {
   const { data: articulo1, isloading } = useGetData(URL, 600000)
   const { data: articulo2, isloading: isloading2 } = useGetData(URL2, 600000)
 
+  const { login, logout, authState } = useContext(AuthContext)
+
+  const setLogin = () => {
+    login('sebastian')
+  }
+  const setLogout = () => {
+    logout()
+  }
   return (
     <div className={styles.container}>
       <Analytics />
@@ -20,6 +31,7 @@ function App () {
         ? <div className={styles.component1}> <Spinner /> </div>
         : (
           <div className={styles.component1}>
+            <NavBar />
             <Component1 notes={articulo1} />
           </div>
           )}

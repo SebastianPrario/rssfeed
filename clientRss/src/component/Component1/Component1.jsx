@@ -32,9 +32,7 @@ const Component1 = ({ notes }) => {
 
   return (
     <div className={styles.component1}>
-      <div className='row bg-primary z-3 '>
-        <h5 className='text-center fs-1 bg-primary z-3 text-white'>titulares</h5>
-      </div>
+     
       <div className='row'>
         <div className='pt-4' id='miDiv' ref={divContext}>
           {article && article.map((elem, index) =>
