@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 const Nav = styled.nav`
     display: flex;
+    position: fixed;
     flex-direction: row;
     align-content: end;
     width: 100%;
@@ -32,7 +33,7 @@ export default function NavBar () {
             <svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'><path fill='#000000' d='M4 17.27v-1h16v1zm0-4.77v-1h16v1zm0-4.77v-1h16v1z' /></svg>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item href='#/action-1'>Crear Cuenta</Dropdown.Item>
+            <Dropdown.Item href='/form'>Crear Cuenta</Dropdown.Item>
             <Dropdown.Item onClick={setLogin}>Ingresar </Dropdown.Item>
             <Dropdown.Item onClick={setLogout}>Salir</Dropdown.Item>
           </Dropdown.Menu>
