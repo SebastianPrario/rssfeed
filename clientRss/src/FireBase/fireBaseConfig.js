@@ -14,7 +14,12 @@ export const fireBaseConfig = () => {
   const appFireBase = initializeApp(firebaseConfig)
   const auth = getAuth(appFireBase)
   auth.languageCode = 'es'
-  return auth
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) { console.log(user) } else { console.log('usuario no logeado') }
+  })
+  
+   return auth
 }
 // export default function Auth () {
 //   const auth = fireBaseConfig()

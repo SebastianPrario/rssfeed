@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import AuthContext from '../auth/AuthContext/AuthContext'
 import styled from 'styled-components'
 import LoginModal from '../pages/LoginModal'
+import { getAuth , signOut , onAuthStateChanged } from 'firebase/auth'
+import { fireBaseConfig } from '../FireBase/fireBaseConfig' 
 
 const Nav = styled.nav`
     display: flex;
@@ -18,14 +20,23 @@ const Nav = styled.nav`
 
 export default function NavBar () {
   const { login, logout, authState } = useContext(AuthContext)
+  const [ user ,setUser ] = useState(null)
   const [loginModal, setLoginModal] = useState(false)
-  console.log(login)
+  const auth = fireBaseConfig()
+
+useEffect(() => {
+   onAuthStateChanged(auth, (user) => {
+    if (user) { setUser(user) } else { setUser(null) }
+   })
+}, [])
+  
   const handleLogin = () => {
     if (!loginModal) setLoginModal(true)
     else setLoginModal(false)
   }
   const setLogout = () => {
-    logout()
+    //logout()
+    signOut(auth)
   }
 
   return (
@@ -38,7 +49,7 @@ export default function NavBar () {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item href='/form'>Crear Cuenta</Dropdown.Item>
-            <Dropdown.Item onClick={handleLogin}>Ingresar </Dropdown.Item>
+            <Dropdown.Item onClick={()=> handleLogin()}>Ingresar </Dropdown.Item>
             <Dropdown.Item onClick={setLogout}>Salir</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -47,7 +58,7 @@ export default function NavBar () {
         <h5 className='text-center fs-1 '>titulares</h5>
       </div>
       <div className='col-3'>
-        {authState.user?.name && <div className='d-none d-md-block fs-4  mt-2'><b>Hola,{authState.user.name}</b></div>}
+        {user?.reloadUserInfo.email && <div className='d-none d-md-block fs-4  mt-2'><b>Hola,{user?.reloadUserInfo.email}</b></div>}
       </div>
     </Nav>
   )
