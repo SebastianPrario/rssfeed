@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import Styled from './styles'
-import { createUserWithEmail } from '../createUserWithEmail'
-import { useState, useEffect } from 'react'
+import { createUserWithEmail } from '../../FireBase/createUserWithEmail'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function UserForm () {

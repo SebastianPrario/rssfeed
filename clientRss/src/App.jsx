@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import ArticleContainer from './containers/ArticleContainer'
-import UserForm from './FireBase/UserForm'
+import UserForm from './pages/UserForm'
 
 function App () {
   return (

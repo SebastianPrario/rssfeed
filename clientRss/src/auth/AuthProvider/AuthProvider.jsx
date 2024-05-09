@@ -17,9 +17,9 @@ const init = () => {
 export default function AuthProvider ({ children }) {
   const [authState, dispatch] = useReducer(authReducer, inicialState, init)
 
-  const login = (name = '') => {
+  const login = (name) => {
+    console.log('entra')
     const user = {
-      id: 'ABC',
       name
     }
     const action = {

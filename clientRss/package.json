@@ -24,7 +24,8 @@
     "react-router-dom": "^6.23.0",
     "rss-parser": "^3.13.0",
     "standard": "^17.1.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "sweetalert2": "^11.10.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

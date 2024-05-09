@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import AuthContext from '../auth/AuthContext/AuthContext'
 import styled from 'styled-components'
+import LoginModal from '../pages/LoginModal'
 
 const Nav = styled.nav`
     display: flex;
@@ -17,9 +18,11 @@ const Nav = styled.nav`
 
 export default function NavBar () {
   const { login, logout, authState } = useContext(AuthContext)
-
-  const setLogin = () => {
-    login('sebastian')
+  const [loginModal, setLoginModal] = useState(false)
+  console.log(login)
+  const handleLogin = () => {
+    if (!loginModal) setLoginModal(true)
+    else setLoginModal(false)
   }
   const setLogout = () => {
     logout()
@@ -27,6 +30,7 @@ export default function NavBar () {
 
   return (
     <Nav>
+      {loginModal && <LoginModal handleLogin={handleLogin} />}
       <div className='ms-0 mt-2'>
         <Dropdown align='start'>
           <Dropdown.Toggle className='ms-0' variant='Primary' id='dropdown-basic'>
@@ -34,7 +38,7 @@ export default function NavBar () {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item href='/form'>Crear Cuenta</Dropdown.Item>
-            <Dropdown.Item onClick={setLogin}>Ingresar </Dropdown.Item>
+            <Dropdown.Item onClick={handleLogin}>Ingresar </Dropdown.Item>
             <Dropdown.Item onClick={setLogout}>Salir</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
