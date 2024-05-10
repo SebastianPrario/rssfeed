@@ -3,9 +3,12 @@ import Styled from './styles'
 import { createUserWithEmail } from '../../FireBase/createUserWithEmail'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { db } from '../../FireBase/FireStore'
+import { collection, addDoc } from 'firebase/firestore'
 
 export default function UserForm () {
   const [fireBase, setFireBase] = useState(null)
+  const [userPrefer, setUserPrefer] = useState(null)
   const navigate = useNavigate()
   const {
     register, // el register tiene informacion de cada campo
@@ -20,11 +23,23 @@ export default function UserForm () {
     const statusCreateUser = await createUserWithEmail(email, password)
     setFireBase(statusCreateUser)
     if (statusCreateUser.status) {
+      try {
+        const docRef = await addDoc(collection(db, 'userId'), {
+          usuario: email,
+          userPrefer,
+        })
+        console.log('Document written with ID: ', docRef.id)
+      } catch (e) {
+        console.error('Error adding document: ', e)
+      }
+      
       setTimeout(() => {
         reset()
         setFireBase(null)
         navigate('/')
       }, 1500)
+      console.log(statusCreateUser)
+      
     }
   }
 
@@ -93,7 +108,10 @@ export default function UserForm () {
       )}
 
       <div>
-        <Styled.StyledButton type='submit'> CREAR</Styled.StyledButton>
+        <Styled.StyledButton className='ms-1 me-5' type='submit'>crear cuenta</Styled.StyledButton>
+        <Styled.StyledButton type='button' onClick={() => { navigate('/') }}> volver
+          <i className='bi bi-arrow-left ms-1' />
+        </Styled.StyledButton>
       </div>
       {fireBase && <p>{fireBase?.status}{fireBase?.message}</p>}
     </Styled.StyledForm>

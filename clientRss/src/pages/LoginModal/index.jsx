@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Styled from './styles'
 import { loginWithMail } from '../../FireBase/loginwithMail'
-import AuthContext from '../../auth/AuthContext/AuthContext'
+import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { loginWithGoogle } from '../../FireBase/loginWithGoogle'
+
 
 export default function LoginModal ({ handleLogin }) {
   const [userLogin, setUserLogin] = useState({ email: '', password: '' })
-  const [errors, setErrors] = useState(null)
-  const { login } = useContext(AuthContext)
 
   function handleChange (e) {
     const nameinput = e.target.name
@@ -19,13 +19,17 @@ export default function LoginModal ({ handleLogin }) {
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const { user, errors } = await loginWithMail(userLogin.email, userLogin.password)
-    console.log(errors.length)
+    const { errors } = await loginWithMail(userLogin.email, userLogin.password)
     if (errors.length > 0) {
       setUserLogin({ email: '', password: '' })
-      return Swal.fire(errors)
+      return Swal.fire('email o contraseña incorrecta')
     }
-    login(user.email)
+    setUserLogin({ email: '', password: '' })
+    handleLogin()
+  }
+
+  const handleWithGoogle = () => {
+    loginWithGoogle()
     setUserLogin({ email: '', password: '' })
     handleLogin()
   }
@@ -33,14 +37,16 @@ export default function LoginModal ({ handleLogin }) {
   return (
     <Styled.StyledModal>
       <div className='container py-1 col-12'>
-        <div className='row d-flex justify-content-center align-items-center h-100'>
+        <div className='row d-flex  align-items-center h-100'>
           <div className='col-12 col-md-12 col-lg-12 col-xl-5'>
             <div className='card bg-dark text-white' style={{ 'border-radius': '1rem' }}>
-              <button type='button' onClick={handleLogin} className='mt-2 mx-auto col-1 btn btn-light'>cerrar </button>
+              <div className='ms-auto col-1'>
+                <button type='button' onClick={handleLogin} className=' text-center mt-2 btn btn-light'>x</button>
+              </div>
               <div className='card-body p-5 text-center'>
                 <div className='mb-md-5 mt-md-4 pb-5'>
                   <h2 className='fw-bold mb-2 text-uppercase'>Login</h2>
-                  <p className='text-white-50 mb-5'>Por favor, ingresar usuario y clave</p>
+                  <p className='text-white-50 mb-5'>Por favor, ingresar mail y clave</p>
 
                   <div data-mdb-input-init className='form-outline form-white mb-4'>
                     <input
@@ -50,7 +56,7 @@ export default function LoginModal ({ handleLogin }) {
                       value={userLogin.email}
                       onChange={(e) => handleChange(e)}
                     />
-                    <label className='form-label' for='typeEmailX'>Usuario</label>
+                    <label className='form-label' for='typeEmailX'>correo</label>
                   </div>
 
                   <div data-mdb-input-init className='form-outline form-white mb-4'>
@@ -62,27 +68,29 @@ export default function LoginModal ({ handleLogin }) {
                       value={userLogin.password}
                       onChange={(e) => handleChange(e)}
                     />
-                    <label className='form-label' for='typePasswordX'>Clave</label>
+                    <label className='form-label' for='typePasswordX'>clave</label>
                   </div>
 
-                  <p className='small mb-5 pb-lg-2'><a className='text-white-50' href='#!'>Forgot password?</a></p>
+                  <p className='small mb-5 pb-lg-2'><a className='text-white-50' href='#!'>Olvidaste la contraseña?</a></p>
 
                   <button
-                    data-mdb-button-init data-mdb-ripple-init className='btn btn-outline-light btn-lg px-5'
+                    data-mdb-button-end data-mdb-ripple-init className='btn btn-outline-light btn-lg'
                     onClick={handleSubmit}
                     type='submit'
                   >Login
                   </button>
 
                   <div className='d-flex justify-content-center text-center mt-4 pt-1'>
-                    <a href='#!' className='text-white'><i className='fab fa-google fa-lg' /></a>
+                    entrar con
+                    <button className='ms-2' onClick={handleWithGoogle}>
+                      <i className='bi bi-google' />
+                    </button>
+                  </div>
+                  <div>
+                    <p className='mt-3'> No tienes cuenta? <Link className='text-white-50 ms-1 fw-bold' to='/form'>Sign Up</Link>
+                    </p>
                   </div>
 
-                </div>
-
-                <div>
-                  <p className='mb-0'>Don't have an account? <a href='#!' className='text-white-50 fw-bold'>Sign Up</a>
-                  </p>
                 </div>
 
               </div>
