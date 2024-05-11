@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import LoginModal from '../pages/LoginModal'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../FireBase/fireBaseConfig'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 const Nav = styled.nav`
     display: flex;
@@ -21,13 +22,13 @@ export default function NavBar () {
   const [user, setUser] = useState(null)
   const [loginModal, setLoginModal] = useState(false)
   const auth = fireBaseConfig()
+  const navigate = useNavigate()
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) { setUser(user) } else { setUser(null) }
     })
   }, [])
-   console.log(user)
   const handleLogin = () => {
     if (!loginModal) setLoginModal(true)
     else setLoginModal(false)
@@ -46,8 +47,13 @@ export default function NavBar () {
             <i className='bi bi-list' />
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item href='/form'>Crear Cuenta</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate('/form')}>
+              Crear Cuenta
+            </Dropdown.Item>
             <Dropdown.Item disabled={user} onClick={() => handleLogin()}>Ingresar </Dropdown.Item>
+            <Dropdown.Item disabled={!user} onClick={() => navigate('/preferUser')}>
+              Preferencias
+            </Dropdown.Item>
             <Dropdown.Item onClick={setLogout}>Salir</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

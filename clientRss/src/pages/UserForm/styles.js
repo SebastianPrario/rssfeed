@@ -47,4 +47,15 @@ export const StyledAlert = styled.span`
   border-radius: 5px;
 
 `
-export default { StyledForm, StyledInput, StyledLabel, StyledAlert, StyledButton }
+export const StyledSelection = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: inherit;
+  height: 25px;
+  color: black;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+
+`
+export default { StyledSelection, StyledForm, StyledInput, StyledLabel, StyledAlert, StyledButton }
