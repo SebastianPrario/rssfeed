@@ -47,14 +47,14 @@ export default function NavBar () {
             <i className='bi bi-list' />
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => navigate('/form')}>
+            <Dropdown.Item  disabled={user} onClick={() => navigate('/form')}>
               Crear Cuenta
             </Dropdown.Item>
             <Dropdown.Item disabled={user} onClick={() => handleLogin()}>Ingresar </Dropdown.Item>
             <Dropdown.Item disabled={!user} onClick={() => navigate('/preferUser')}>
               Preferencias
             </Dropdown.Item>
-            <Dropdown.Item onClick={setLogout}>Salir</Dropdown.Item>
+            <Dropdown.Item disabled={!user} onClick={setLogout}>Salir</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>

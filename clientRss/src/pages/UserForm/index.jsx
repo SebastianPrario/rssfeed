@@ -3,12 +3,9 @@ import Styled from './styles'
 import { createUserWithEmail } from '../../FireBase/createUserWithEmail'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { db } from '../../FireBase/FireStore'
-import { collection, addDoc } from 'firebase/firestore'
 
 export default function UserForm () {
   const [fireBase, setFireBase] = useState(null)
-  const [selectedOption, setSelectedOption] = useState([]) // Estado para almacenar la opción seleccionada
   const navigate = useNavigate()
 
   const {
@@ -18,31 +15,17 @@ export default function UserForm () {
     formState: { errors }
   } = useForm()
 
-  const handleOptionChange = (event) => {
-    setSelectedOption([...selectedOption, event.target.value]) //
-  }
-
   const onSubmit = async (data) => {
     const { email, password } = data
     const statusCreateUser = await createUserWithEmail(email, password)
     setFireBase(statusCreateUser)
     if (statusCreateUser.status) {
-      try {
-        const docRef = await addDoc(collection(db, 'userId'), {
-          usuario: email,
-          userPrefer: selectedOption || []
-        })
-        console.log('Document written with ID: ', docRef.id)
-      } catch (e) {
-        console.error('Error adding document: ', e)
-      }
-
       setTimeout(() => {
         reset()
         setFireBase(null)
         navigate('/')
       }, 1500)
-    }
+    } else { console.log('error al crear usuario')}
   }
 
   const required = 'campo requerido'
@@ -108,29 +91,8 @@ export default function UserForm () {
       {errors.password && errors.password.type === 'minLength' && (
         <Styled.StyledAlert role='alert'>mínimo 6 caracteres</Styled.StyledAlert>
       )}
-      <div className='mt-4'>
-        <h1>Elige dos Medios para personalizar tu App</h1>
-        <form>
-          <label>
-            Selecciona una opción:
-            <select disabled={selectedOption.length === 2} value={selectedOption} onChange={handleOptionChange}>
-              <option value=''>Selecciona una opción</option>
-              <option value='Clarin'>Clarin</option>
-              <option value='Infobae'>Infobae</option>
-              <option value='laNacion'>La Nación</option>
-              <option value='BBC'>BBC en español</option>
-            </select>
-          </label>
-        </form>
-        <Styled.StyledSelection>
-          <p> {selectedOption && selectedOption?.map(source =>
-
-            <span className='mx-2' key={source}>{source}</span>)}
-          </p>
-        </Styled.StyledSelection>
-        <button className='btn btn-danger mt-2 me-4' type='button' onClick={() => setSelectedOption([])}>resetear elección</button>
-      </div>
-      <div>
+      
+      <div className='ms-5 mt-1'>
         <Styled.StyledButton className='ms-1 me-5' type='submit'>crear cuenta</Styled.StyledButton>
         <Styled.StyledButton type='button' onClick={() => { navigate('/') }}> volver
           <i className='bi bi-arrow-left ms-1' />
