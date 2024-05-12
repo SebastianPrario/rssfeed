@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import LoginModal from '../pages/LoginModal'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../FireBase/fireBaseConfig'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import logo from '../../public/logo.jpg'
 
 const Nav = styled.nav`
     display: flex;
@@ -43,11 +44,11 @@ export default function NavBar () {
       {loginModal && <LoginModal handleLogin={handleLogin} />}
       <div className='col-4 ms-0 mt-2'>
         <Dropdown align='start'>
-          <Dropdown.Toggle className='ms-0' variant='Primary' id='dropdown-basic'>
+          <Dropdown.Toggle className='ms-0 text-white' variant='Primary' id='dropdown-basic'>
             <i className='bi bi-list' />
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item  disabled={user} onClick={() => navigate('/form')}>
+            <Dropdown.Item disabled={user} onClick={() => navigate('/form')}>
               Crear Cuenta
             </Dropdown.Item>
             <Dropdown.Item disabled={user} onClick={() => handleLogin()}>Ingresar </Dropdown.Item>
@@ -58,11 +59,12 @@ export default function NavBar () {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      <div className='col-4'>
-        <h5 className='text-center fs-1 '>titulares</h5>
+      <div className='col-4 d-inline-flex'>
+        <img src={logo} style={{ width: '50px' }} alt='imagen del logo de la pagina' />
+        <h5 className='text-center ms-1 text-white fs-1 '>titulares</h5>
       </div>
       <div className='col-4'>
-        {user?.reloadUserInfo.email && <div className='d-none d-md-block fs-4 mt-2'><b>Hola,{user?.reloadUserInfo.email}</b></div>}
+        {user?.reloadUserInfo.email && <div className='d-none d-md-block fs-4 mt-2 text-white'><b>Hola,{user?.reloadUserInfo.email}</b></div>}
       </div>
     </Nav>
   )
