@@ -4,8 +4,8 @@ const oleRss = async (URL) => {
   let feed = ''
   const parser = new Parser()
   const articles = []
-  console.log('entra aca')
-  
+  console.log('entra OLE')
+
   for (const elem of URL) {
     feed = await parser.parseURL(elem)
 
@@ -16,14 +16,13 @@ const oleRss = async (URL) => {
           content: elem.content.slice(3, -4),
           link: elem.link,
           source: `${feed.title}`,
-          image: JSON.stringify(elem.enclosure.url).slice(1, -1),
-    
+          image: JSON.stringify(elem.enclosure.url).slice(1, -1)
+
         }
       )
     }
     )
   }
-  console.log(articles)
   return articles
 }
 

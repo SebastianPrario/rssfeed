@@ -18,7 +18,6 @@ const PreferUser = () => {
 
   // esta funcion busca el documento que tenga el campo igual al nombre del usuario
   const getUserPrefer = async () => {
-    console.log(user)
     const q = query(collection(db, 'UserPreferRss'), where('usuario', '==', user))
     const querySnapshot = await getDocs(q)
     
@@ -27,7 +26,7 @@ const PreferUser = () => {
       setSelectedOption((doc.data().userPrefer))
     })
   }
-  console.log(documentInfo)
+
   const handleOptionChange = (event) => {
     setSelectedOption([...selectedOption, event.target.value]) //
   }
@@ -74,9 +73,8 @@ const PreferUser = () => {
             <select disabled={selectedOption.length === 2} value={selectedOption} onChange={handleOptionChange}>
               <option value=''>Selecciona una opción</option>
               <option value='Clarin'>Clarin</option>
-              <option value='Infobae'>Infobae</option>
-              <option value='laNacion'>La Nación</option>
-              <option value='BBC'>BBC en español</option>
+              <option value='Perfil'>Perfil</option>
+              <option value='Ole'>Olé</option>
             </select>
           </label>
         </form>

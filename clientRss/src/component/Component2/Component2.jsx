@@ -2,6 +2,7 @@ import { useState, React, useEffect } from 'react'
 import styles from './Component2.module.css'
 
 const Component2 = ({ notes2 }) => {
+ 
   const [title, setTitle] = useState()
   const [, setContent] = useState()
   const [source, setSource] = useState()
@@ -15,7 +16,7 @@ const Component2 = ({ notes2 }) => {
       setContent(notes2[position].content)
       setSource(notes2[position].source)
       setLink(notes2[position].link)
-      setImage(notes2[position].enclosure.split('"')[3])
+      setImage(notes2[position].image)
       setPosition(position + 1)
     }
   }
@@ -28,7 +29,7 @@ const Component2 = ({ notes2 }) => {
       setContent(notes2[position].content)
       setSource(notes2[position].source)
       setLink(notes2[position].link)
-      setImage(notes2[position].enclosure.split('"')[3])
+      setImage(notes2[position].image)
       setPosition(position + 1)
     }, 8000)
   }

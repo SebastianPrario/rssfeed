@@ -11,7 +11,8 @@ const Component1 = ({ notes }) => {
   const tl = gsap?.timeline({ repeat: -1 })
 
   tl.fromTo(divContext && divContext.current,
-    { y: 200,
+    {
+      y: 200,
       ease: 'none'
     },
     {
@@ -32,7 +33,7 @@ const Component1 = ({ notes }) => {
 
   return (
     <div className={styles.component1}>
-     
+
       <div className='row'>
         <div className='pt-4' id='miDiv' ref={divContext}>
           {article && article.map((elem, index) =>
