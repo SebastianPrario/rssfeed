@@ -1,48 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Styled from './../UserForm/styles'
 import { useNavigate } from 'react-router-dom'
 import { db } from '../../FireBase/FireStore'
 import { collection, doc, query, where, setDoc, getDocs, getDoc, addDoc } from 'firebase/firestore'
 import { onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../../FireBase/fireBaseConfig'
+import { userContext } from '../../../context/user'
 
 const PreferUser = () => {
+  const { state, getDocument ,getDocumentId } = useContext(userContext)
+  const { document, documentId, user } = state
   const navigate = useNavigate()
-  const auth = fireBaseConfig()
-  const [selectedOption, setSelectedOption] = useState([])
-  // Estado para almacenar la opción seleccionada
-  const [user, setUser] = useState(null)
-  // Estado para almacenar el usuario 
-  const [documentInfo, setDocumentInfo] = useState(null)
-  // Estado para guardar los datos del documento si lo hubiera
-
-  // esta funcion busca el documento que tenga el campo igual al nombre del usuario
-  const getUserPrefer = async () => {
-    const q = query(collection(db, 'UserPreferRss'), where('usuario', '==', user))
-    const querySnapshot = await getDocs(q)
-    
-    querySnapshot.forEach((doc) => {
-      setDocumentInfo(doc.id)
-      setSelectedOption((doc.data().userPrefer))
-    })
-  }
-
+  const [selectedOption, setSelectedOption] = useState(document || [])
+ 
   const handleOptionChange = (event) => {
     setSelectedOption([...selectedOption, event.target.value]) //
   }
   // submit si ya existe el documento actualiza Bdd sino crea documento en bdd
-  const onSubmit = async (data) => {
+  const onSubmit = async () => {
     try {
-      if (documentInfo) {
-        await setDoc(doc(db, 'UserPreferRss', documentInfo), {
+      if (documentId) {
+        await setDoc(doc(db, 'UserPreferRss', documentId), {
           usuario: user,
           userPrefer: selectedOption
         })
+        getDocument(selectedOption)
       } else {
         const docRef = await addDoc(collection(db, 'UserPreferRss'), {
           usuario: user,
           userPrefer: selectedOption || []
         })
+        getDocument(selectedOption)
+        getDocumentId(docRef.id)
         console.log('Document written with ID: ', docRef.id)
       }
     } catch (e) {
@@ -52,15 +41,7 @@ const PreferUser = () => {
       navigate('/')
     }, 500)
   }
-  useEffect(() => {
-    // recupera el usuario logeado
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user.uid)
-      } else { setUser(null) }
-    })
-    getUserPrefer()
-  }, [user])
+
   return (
     <div>
       <div className='mt-4 text-center'>
@@ -84,7 +65,7 @@ const PreferUser = () => {
           </p>
         </Styled.StyledSelection>
         <button className='btn btn-danger mt-2 me-4' type='button' onClick={() => setSelectedOption([])}>resetear elección</button>
-     
+
       </div>
       <div className='ps-4 me-5 text-center'>
         <Styled.StyledButton className='me-5' type='submit' onClick={() => onSubmit()}>enviar</Styled.StyledButton>

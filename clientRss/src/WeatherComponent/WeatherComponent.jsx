@@ -14,9 +14,9 @@ const WeatherComponent = () => {
   }
   function errors (err) { console.warn(`ERROR(${err.code}): ${err.message}`) }
   const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-  
+  const API_KEY = import.meta.env.VITE_REACT_API_WEATHER_KEY
   const URL = `https://my.meteoblue.com/packages/current?apikey=t1MhpHy0fsBUNi8g&lat=${coords?.lat}&lon=${coords?.lon}&asl=${coords?.accur}&format=json`
-
+  console.log(API_KEY)
   if (!data) {
     axios(URL)
       .then((response) => setData(response.data))

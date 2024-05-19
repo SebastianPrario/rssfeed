@@ -5,31 +5,31 @@ import Component3 from './../../component/Component3/Component3'
 import NavBar from './../../NavBar/NavBar'
 import useGetData from './../../Hook/useGetData'
 import styles from './ArticleContainer.module.css'
+import { useContext, useEffect } from 'react'
+import { userContext } from '../../../context/user'
 import getDocumentUser from '../../FireBase/getDocumentUser'
-import { useEffect, useState } from 'react'
 
 export default function ArticleContainer () {
-  const [first, second] = getDocumentUser()
-  const documento = ''
-  console.log(documento)
-  console.log(first, second)
+  const { state } = useContext(userContext)
+  getDocumentUser()
+  const { document } = state
   let URL = import.meta.env.VITE_REACT_API_URL
   let URL2 = import.meta.env.VITE_REACT_API_URL2
+
+  if (document) {
+    URL = `${import.meta.env.VITE_REACT_API_URLPLUS}${document[0]}`
+    URL2 = `${import.meta.env.VITE_REACT_API_URLPLUS}${document[1]}`
+  }
+
+  const { data, getAxios } = useGetData(URL, 600000)
+  const { data: articulo1, isloading } = data
+  const { data: data2, getAxios: getAxios2 } = useGetData(URL2, 600000)
+  const { data: articulo2, isloading: isLoading2 } = data2
+
   useEffect(() => {
-    if (first) {
-      URL = `${import.meta.env.VITE_REACT_API_URLPLUS}${first}`
-      console.log(URL)
-    }
-    if (second) {
-      URL2 = `${import.meta.env.VITE_REACT_API_URLPLUS}${second}`
-      console.log(URL2)
-    }
-  }, [first, second])
-
-  const { data: articulo1, isloading } = useGetData(URL, 600000)
-  const { data: articulo2, isloading: isloading2 } = useGetData(URL2, 600000)
-  console.log(URL2)
-
+    getAxios()
+    getAxios2()
+  }, [document])
   return (
     <div className={styles.container}>
       {isloading
@@ -41,7 +41,7 @@ export default function ArticleContainer () {
           </div>
           )}
       <div className='row'>
-        {isloading2
+        {isLoading2
           ? (
             <div className='col-6 md-col-8 pe-0'>
               <Spinner />

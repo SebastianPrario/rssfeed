@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import styled from 'styled-components'
 import LoginModal from '../pages/LoginModal'
@@ -6,6 +6,7 @@ import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../FireBase/fireBaseConfig'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../public/logo.jpg'
+import { userContext } from '../../context/user'
 
 const Nav = styled.nav`
     display: flex;
@@ -20,6 +21,7 @@ const Nav = styled.nav`
 `
 
 export default function NavBar () {
+  const { state, clearDocument } = useContext(userContext)
   const [user, setUser] = useState(null)
   const [loginModal, setLoginModal] = useState(false)
   const auth = fireBaseConfig()
@@ -28,6 +30,7 @@ export default function NavBar () {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) { setUser(user) } else { setUser(null) }
+      if (!user) { clearDocument() }
     })
   }, [])
   const handleLogin = () => {
@@ -35,7 +38,6 @@ export default function NavBar () {
     else setLoginModal(false)
   }
   const setLogout = () => {
-    // logout()
     signOut(auth)
   }
 
@@ -55,7 +57,7 @@ export default function NavBar () {
             <Dropdown.Item disabled={!user} onClick={() => navigate('/preferUser')}>
               Preferencias
             </Dropdown.Item>
-            <Dropdown.Item disabled={!user} onClick={setLogout}>Salir</Dropdown.Item>
+            <Dropdown.Item disabled={!user} onClick={() => setLogout(clearDocument)}>Salir</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
@@ -64,7 +66,7 @@ export default function NavBar () {
         <h5 className='text-center ms-1 text-white fs-1 '>titulares</h5>
       </div>
       <div className='col-4'>
-        {user?.reloadUserInfo.email && <div className='d-none d-md-block fs-4 mt-2 text-white'><b>Hola,{user?.reloadUserInfo.email}</b></div>}
+        {state.user && <div className='d-none d-md-block fs-4 mt-2 text-white'><b>Hola,{state.user}</b></div>}
       </div>
     </Nav>
   )

@@ -35,7 +35,7 @@ const useGetData = (URL, time) => {
     } catch (error) { console.log('error conexion con el servidor') }
   }
 
-  return data
+  return { data, getAxios }
 }
 
 export default useGetData
