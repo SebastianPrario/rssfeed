@@ -7,6 +7,9 @@ import { fireBaseConfig } from '../FireBase/fireBaseConfig'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../public/logo.jpg'
 import { userContext } from '../../context/user'
+import FormLogin from '../pages/LoginModal/FormLogin/FormLogin'
+import UserForm from '../pages/UserForm'
+import PreferUser from '../pages/PreferUser/PreferUser'
 
 const Nav = styled.nav`
     display: flex;
@@ -21,9 +24,9 @@ const Nav = styled.nav`
 `
 
 export default function NavBar () {
+  const [handleChange, setHandleChange] = useState('')
   const { state, clearDocument } = useContext(userContext)
   const [user, setUser] = useState(null)
-  const [loginModal, setLoginModal] = useState(false)
   const auth = fireBaseConfig()
   const navigate = useNavigate()
 
@@ -33,28 +36,49 @@ export default function NavBar () {
       if (!user) { clearDocument() }
     })
   }, [])
+
   const handleLogin = () => {
-    if (!loginModal) setLoginModal(true)
-    else setLoginModal(false)
+    setHandleChange('')
   }
   const setLogout = () => {
     signOut(auth)
   }
 
+  if (handleChange === 'login') {
+    return (
+      <LoginModal handleLogin={handleLogin}>
+        <FormLogin setHandleChange={setHandleChange}/>
+      </LoginModal>
+    )
+  }
+  if (handleChange === 'form') {
+    return (
+      <LoginModal handleLogin={handleLogin}>
+        <UserForm setHandleChange={setHandleChange}/>
+      </LoginModal>
+    )
+  }
+  if (handleChange === 'pref') {
+    return (
+      <LoginModal handleLogin={handleLogin}>
+        <PreferUser setHandleChange={setHandleChange}/>
+      </LoginModal>
+    )
+  }
   return (
     <Nav>
-      {loginModal && <LoginModal handleLogin={handleLogin} />}
+
       <div className='col-4 ms-0 mt-2'>
         <Dropdown align='start'>
           <Dropdown.Toggle className='ms-0 text-white' variant='Primary' id='dropdown-basic'>
             <i className='bi bi-list' />
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item disabled={user} onClick={() => navigate('/form')}>
+            <Dropdown.Item disabled={user} onClick={() => setHandleChange('form')}>
               Crear Cuenta
             </Dropdown.Item>
-            <Dropdown.Item disabled={user} onClick={() => handleLogin()}>Ingresar </Dropdown.Item>
-            <Dropdown.Item disabled={!user} onClick={() => navigate('/preferUser')}>
+            <Dropdown.Item disabled={user} onClick={() => setHandleChange('login')}>Ingresar </Dropdown.Item>
+            <Dropdown.Item disabled={!user} onClick={() => setHandleChange('pref')}>
               Preferencias
             </Dropdown.Item>
             <Dropdown.Item disabled={!user} onClick={() => setLogout(clearDocument)}>Salir</Dropdown.Item>

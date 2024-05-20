@@ -32,6 +32,7 @@ export default function UserForm () {
 
   return (
     <Styled.StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <h3 className='fw-bold mb-2 text-uppercase'>Crear Cuenta</h3>
       <Styled.StyledLabel
         htmlFor='name'
       >Nombre
@@ -94,9 +95,6 @@ export default function UserForm () {
       
       <div className='ms-5 mt-1'>
         <Styled.StyledButton className='ms-1 me-5' type='submit'>crear cuenta</Styled.StyledButton>
-        <Styled.StyledButton type='button' onClick={() => { navigate('/') }}> volver
-          <i className='bi bi-arrow-left ms-1' />
-        </Styled.StyledButton>
       </div>
       {fireBase && <p>{fireBase?.status}{fireBase?.message}</p>}
     </Styled.StyledForm>

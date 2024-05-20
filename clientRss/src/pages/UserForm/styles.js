@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 export const StyledForm = styled.form`
-  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   border-radius: 5px;
 `
@@ -39,7 +41,8 @@ export const StyledButton = styled.button`
 `
 
 export const StyledAlert = styled.span`
-  padding: 10px;
+  font-size: xx-small;
+
   background-color: #f44336;
   color: black;
   margin-top: 10px;

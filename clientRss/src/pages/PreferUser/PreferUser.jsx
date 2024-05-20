@@ -7,12 +7,12 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../../FireBase/fireBaseConfig'
 import { userContext } from '../../../context/user'
 
-const PreferUser = () => {
-  const { state, getDocument ,getDocumentId } = useContext(userContext)
+const PreferUser = ({setHandleChange}) => {
+  const { state, getDocument, getDocumentId } = useContext(userContext)
   const { document, documentId, user } = state
   const navigate = useNavigate()
   const [selectedOption, setSelectedOption] = useState(document || [])
- 
+
   const handleOptionChange = (event) => {
     setSelectedOption([...selectedOption, event.target.value]) //
   }
@@ -38,10 +38,9 @@ const PreferUser = () => {
       console.error('Error adding document: ', e)
     }
     setTimeout(() => {
-      navigate('/')
+      setHandleChange('')
     }, 500)
   }
-
   return (
     <div>
       <div className='mt-4 text-center'>
@@ -61,18 +60,15 @@ const PreferUser = () => {
         </form>
         <Styled.StyledSelection className='justify-content-center'>
           <p> {selectedOption && selectedOption?.map(source =>
-            <span className='mx-2' key={source}>{source}</span>)}
+            <span className='mx-2 text-white' key={source}>{source}</span>)}
           </p>
         </Styled.StyledSelection>
-        <button className='btn btn-danger mt-2 me-4' type='button' onClick={() => setSelectedOption([])}>resetear elección</button>
+        <div className='mb-4'>
+          <button className='btn btn-danger mt-2 me-4' type='button' onClick={() => setSelectedOption([])}>resetear elección</button>
+          <button className='btn btn-danger mt-2 me-4' type='submit' onClick={() => onSubmit()}>enviar</button>
+        </div>
+      </div>
 
-      </div>
-      <div className='ps-4 me-5 text-center'>
-        <Styled.StyledButton className='me-5' type='submit' onClick={() => onSubmit()}>enviar</Styled.StyledButton>
-        <Styled.StyledButton type='button' onClick={() => { navigate('/') }}> volver
-          <i className='bi bi-arrow-left ms-1' />
-        </Styled.StyledButton>
-      </div>
     </div>
   )
 }
