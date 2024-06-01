@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { loginWithGoogle } from '../../../FireBase/loginWithGoogle'
 
-export default function FormLogin () {
+export default function FormLogin ({onCloseModal}) {
   const [userLogin, setUserLogin] = useState({ email: '', password: '' })
-
+ 
   function handleChange (e) {
     const nameinput = e.target.name
     const valueinput = e.target.value
@@ -23,13 +23,13 @@ export default function FormLogin () {
       return Swal.fire('email o contraseña incorrecta')
     }
     setUserLogin({ email: '', password: '' })
-    handleLogin()
+    onCloseModal()
   }
 
   const handleWithGoogle = () => {
     loginWithGoogle()
     setUserLogin({ email: '', password: '' })
-    handleLogin()
+    onCloseModal()
   }
 
   return (

@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useGetData from '../Hook/useGetData'
 import styles from './GetQuote.module.css'
 import Spinner from '../component/Spinner/Spinner'
+import axios from 'axios'
+
+const getAxios = async () => {
+  const data = await axios.get('https://api.bluelytics.com.ar/v2/latest')
+  return data
+}
 
 const GetQuote = () => {
-  const URL = 'https://api.bluelytics.com.ar/v2/latest'
-
-  const { data } = useGetData(URL, 1800000)
-  const { data: quote, isloading } = data
+  const [data, setData] = useState()
+  data && console.log(data.data)
+  const quote = data
+  console.log(quote)
+  useEffect(() => {
+    getAxios().then((data) => setData(data.data))
+  }, [])
   return (
-    isloading
+    !data
       ? ((<><p>Cargando ...</p><Spinner /></>))
       : (
         <div translate='no'>
@@ -17,18 +26,18 @@ const GetQuote = () => {
           <div className={styles.div}>
             <div>
               <p className='ms-2 text-white fs-3 text-center'>Blue:</p>
-              <p className='ms-2 text-white fs-4'>venta: $ {quote.blue.value_sell}</p>
-              <p className='ms-2 text-white fs-4'>compra: $ {quote.blue.value_buy}</p>
+              <p className='ms-2 text-white fs-4'>venta: $ {quote?.blue.value_sell}</p>
+              <p className='ms-2 text-white fs-4'>compra: $ {quote?.blue.value_buy}</p>
             </div>
             <div>
               <p className='ms-2 text-white fs-3 text-center'>Oficial:</p>
-              <p className='ms-2 text-white fs-4'>venta: $ {quote.oficial.value_sell}</p>
-              <p className='ms-2 text-white fs-4'>compra: $ {quote.oficial.value_buy}</p>
+              <p className='ms-2 text-white fs-4'>venta: $ {quote?.oficial.value_sell}</p>
+              <p className='ms-2 text-white fs-4'>compra: $ {quote?.oficial.value_buy}</p>
             </div>
 
           </div>
           <div>
-            <p className='ms-3 text-white fs-7 text-center'> última actualización: {quote.last_update.slice(0, 19).split('T')[1]} - {quote.last_update.slice(0, 19).split('T')[0]}</p>
+            <p className='ms-3 text-white fs-7 text-center'> última actualización: {quote?.last_update.slice(0, 19).split('T')[1]} - {quote?.last_update.slice(0, 19).split('T')[0]}</p>
           </div>
         </div>)
 

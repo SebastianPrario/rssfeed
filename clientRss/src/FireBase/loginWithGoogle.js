@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { fireBaseConfig } from './fireBaseConfig'
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import getDocumentUser from './getDocumentUser'
 
 export const loginWithGoogle = async () => {
   const auth = fireBaseConfig()

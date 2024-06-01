@@ -1,5 +1,5 @@
-export const userInitialState = JSON.parse(window.localStorage.getItem('documentUser')) || []
-
+export const userInitialState = JSON.parse(window.localStorage.getItem('user')) || []
+//
 export const USER_ACTION_TYPES = {
   GET_DOCUMENT: 'GET_DOCUMENT',
   CLEAR_DOCUMENT: 'CLEAR_DOCUMENT',
@@ -8,10 +8,10 @@ export const USER_ACTION_TYPES = {
   GET_DOCUMENTID: 'GET_DOCUMENTID'
 }
 
-// // update localStorage with state for cart
-// export const updateLocalStorage = state => {
-//   window.localStorage.setItem('cart', JSON.stringify(state))
-// }
+// update localStorage with state
+export const updateLocalStorage = state => {
+  window.localStorage.setItem('user', JSON.stringify(state))
+}
 
 const UPDATE_STATE_BY_ACTION = {
   [USER_ACTION_TYPES.GET_DOCUMENT]: (state, action) => {
@@ -24,8 +24,9 @@ const UPDATE_STATE_BY_ACTION = {
   [USER_ACTION_TYPES.GET_USER]: (state, action) => {
     const newState = {
       ...state,
-      user: action.payload
+      ...action.payload
     }
+    updateLocalStorage(newState)
     return newState
   },
   [USER_ACTION_TYPES.GET_DOCUMENTID]: (state, action) => {
@@ -43,6 +44,7 @@ const UPDATE_STATE_BY_ACTION = {
     return newState
   },
   [USER_ACTION_TYPES.CLEAR_DOCUMENT]: () => {
+    updateLocalStorage([])
     return userInitialState
   }
 }

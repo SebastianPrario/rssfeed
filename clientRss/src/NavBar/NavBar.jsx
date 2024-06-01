@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import LoginModal from '../pages/LoginModal'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../FireBase/fireBaseConfig'
-import { useNavigate } from 'react-router-dom'
 import logo from '../../public/logo.jpg'
 import { userContext } from '../../context/user'
 import FormLogin from '../pages/LoginModal/FormLogin/FormLogin'
@@ -28,7 +27,6 @@ export default function NavBar () {
   const { state, clearDocument } = useContext(userContext)
   const [user, setUser] = useState(null)
   const auth = fireBaseConfig()
-  const navigate = useNavigate()
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -40,21 +38,22 @@ export default function NavBar () {
   const handleLogin = () => {
     setHandleChange('')
   }
-  const setLogout = () => {
-    signOut(auth)
+  const setLogout = async () => {
+    await signOut(auth)
+    clearDocument()
   }
 
   if (handleChange === 'login') {
     return (
       <LoginModal handleLogin={handleLogin}>
-        <FormLogin setHandleChange={setHandleChange}/>
+        <FormLogin onCloseModal={setHandleChange}/>
       </LoginModal>
     )
   }
   if (handleChange === 'form') {
     return (
       <LoginModal handleLogin={handleLogin}>
-        <UserForm setHandleChange={setHandleChange}/>
+        <UserForm onCloseModal={setHandleChange}/>
       </LoginModal>
     )
   }
@@ -67,7 +66,6 @@ export default function NavBar () {
   }
   return (
     <Nav>
-
       <div className='col-4 ms-0 mt-2'>
         <Dropdown align='start'>
           <Dropdown.Toggle className='ms-0 text-white' variant='Primary' id='dropdown-basic'>
@@ -81,7 +79,7 @@ export default function NavBar () {
             <Dropdown.Item disabled={!user} onClick={() => setHandleChange('pref')}>
               Preferencias
             </Dropdown.Item>
-            <Dropdown.Item disabled={!user} onClick={() => setLogout(clearDocument)}>Salir</Dropdown.Item>
+            <Dropdown.Item disabled={!user} onClick={() => setLogout()}>Salir</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>

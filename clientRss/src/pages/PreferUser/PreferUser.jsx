@@ -7,8 +7,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../../FireBase/fireBaseConfig'
 import { userContext } from '../../../context/user'
 
-const PreferUser = ({setHandleChange}) => {
-  const { state, getDocument, getDocumentId } = useContext(userContext)
+const PreferUser = ({ setHandleChange }) => {
+  const { state, getUser, getDocument, getDocumentId } = useContext(userContext)
   const { document, documentId, user } = state
   const navigate = useNavigate()
   const [selectedOption, setSelectedOption] = useState(document || [])
@@ -24,14 +24,17 @@ const PreferUser = ({setHandleChange}) => {
           usuario: user,
           userPrefer: selectedOption
         })
-        getDocument(selectedOption)
+        getUser({ document: selectedOption })
       } else {
         const docRef = await addDoc(collection(db, 'UserPreferRss'), {
           usuario: user,
           userPrefer: selectedOption || []
         })
-        getDocument(selectedOption)
-        getDocumentId(docRef.id)
+        getUser({
+          document: selectedOption,
+          documentId: docRef.id
+        })
+
         console.log('Document written with ID: ', docRef.id)
       }
     } catch (e) {

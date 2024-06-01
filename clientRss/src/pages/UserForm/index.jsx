@@ -4,7 +4,7 @@ import { createUserWithEmail } from '../../FireBase/createUserWithEmail'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function UserForm () {
+export default function UserForm ({ onCloseModal }) {
   const [fireBase, setFireBase] = useState(null)
   const navigate = useNavigate()
 
@@ -23,9 +23,9 @@ export default function UserForm () {
       setTimeout(() => {
         reset()
         setFireBase(null)
-        navigate('/')
+        onCloseModal()
       }, 1500)
-    } else { console.log('error al crear usuario')}
+    } else { console.log('error al crear usuario') }
   }
 
   const required = 'campo requerido'
@@ -92,7 +92,7 @@ export default function UserForm () {
       {errors.password && errors.password.type === 'minLength' && (
         <Styled.StyledAlert role='alert'>mínimo 6 caracteres</Styled.StyledAlert>
       )}
-      
+
       <div className='ms-5 mt-1'>
         <Styled.StyledButton className='ms-1 me-5' type='submit'>crear cuenta</Styled.StyledButton>
       </div>

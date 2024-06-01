@@ -3,15 +3,18 @@ import Component2 from './../../component/Component2/Component2'
 import Spinner from './../../component/Spinner/Spinner'
 import Component3 from './../../component/Component3/Component3'
 import NavBar from './../../NavBar/NavBar'
+import { IS_DEVELOPMENT } from './../../config.js'
 import useGetData from './../../Hook/useGetData'
 import styles from './ArticleContainer.module.css'
 import { useContext, useEffect } from 'react'
 import { userContext } from '../../../context/user'
 import getDocumentUser from '../../FireBase/getDocumentUser'
+import Footer from './../../Footer/Footer'
 
 export default function ArticleContainer () {
+  console.log('entradas')
   const { state } = useContext(userContext)
-  getDocumentUser()
+  if (!state.document) getDocumentUser()
   const { document } = state
   let URL = import.meta.env.VITE_REACT_API_URL
   let URL2 = import.meta.env.VITE_REACT_API_URL2
@@ -21,18 +24,15 @@ export default function ArticleContainer () {
     URL2 = `${import.meta.env.VITE_REACT_API_URLPLUS}${document[1]}`
   }
 
-  const { data, getAxios } = useGetData(URL, 600000)
-  const { data: articulo1, isloading } = data
-  const { data: data2, getAxios: getAxios2 } = useGetData(URL2, 600000)
-  const { data: articulo2, isloading: isLoading2 } = data2
+  const { data, getAxios } = useGetData(URL, URL2, 600000)
+  const { data: articulo1, data2: articulo2, isLoading } = data
 
   useEffect(() => {
     getAxios()
-    getAxios2()
   }, [document])
   return (
     <div className={styles.container}>
-      {isloading
+      {isLoading
         ? <div className={styles.component1}> <Spinner /> </div>
         : (
           <div className={styles.component1}>
@@ -41,7 +41,7 @@ export default function ArticleContainer () {
           </div>
           )}
       <div className='row'>
-        {isLoading2
+        {isLoading
           ? (
             <div className='col-6 md-col-8 pe-0'>
               <Spinner />
@@ -57,6 +57,7 @@ export default function ArticleContainer () {
           <Component3 />
         </div>
       </div>
+      {IS_DEVELOPMENT && <Footer />}
     </div>
   )
 }
