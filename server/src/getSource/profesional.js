@@ -1,27 +1,27 @@
 const Parser = require('rss-parser')
 
-const getURLImage = (element) => {
-  const regex = /"([^"]+)"/g
-  const matches = element?.match(regex)
-  return matches
+const getTextInContent = (element) => {
+  const inicio = element.split('\n')
+  const parteExtraida = inicio[2]
+  return parteExtraida
 }
-
-const clarinRss = async (URL) => {
+const profesionalRss = async (URL) => {
   const parser = new Parser()
   const articles = []
-  console.log('entra clarin')
+  console.log('entra iprofesional')
   let feed = ''
   for (const elem of URL) {
     feed = await parser.parseURL(elem)
+
     feed.items.map(elem => {
-      const image = getURLImage(JSON.stringify(elem?.enclosure))[1].slice(1, -1)
+      const content = getTextInContent(elem.content).trim()
       articles.push(
         {
           title: `${elem.title}`,
-          content: `${elem.content}`,
+          content,
           link: `${elem.link}`,
           source: `${feed.title}`,
-          image
+          image: `${elem.enclosure.url}`
         }
       )
     }
@@ -30,4 +30,4 @@ const clarinRss = async (URL) => {
   return articles
 }
 
-module.exports = clarinRss
+module.exports = profesionalRss

@@ -34,7 +34,6 @@ const PreferUser = ({ setHandleChange }) => {
           document: selectedOption,
           documentId: docRef.id
         })
-
         console.log('Document written with ID: ', docRef.id)
       }
     } catch (e) {
@@ -58,6 +57,8 @@ const PreferUser = ({ setHandleChange }) => {
               <option value='Clarin'>Clarin</option>
               <option value='Perfil'>Perfil</option>
               <option value='Ole'>Olé</option>
+              <option value='Pagina'>Página 12</option>
+              <option value='Profesional'>iProfesional</option>
             </select>
           </label>
         </form>
@@ -68,7 +69,7 @@ const PreferUser = ({ setHandleChange }) => {
         </Styled.StyledSelection>
         <div className='mb-4'>
           <button className='btn btn-danger mt-2 me-4' type='button' onClick={() => setSelectedOption([])}>resetear elección</button>
-          <button className='btn btn-danger mt-2 me-4' type='submit' onClick={() => onSubmit()}>enviar</button>
+          <button className='btn btn-danger mt-2 me-4' disabled={selectedOption.length < 2 } type='submit' onClick={() => onSubmit()}>enviar</button>
         </div>
       </div>
 

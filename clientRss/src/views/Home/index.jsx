@@ -1,17 +1,17 @@
-import Component1 from './../../component/Component1/Component1'
-import Component2 from './../../component/Component2/Component2'
-import Spinner from './../../component/Spinner/Spinner'
-import Component3 from './../../component/Component3/Component3'
-import NavBar from './../../NavBar/NavBar'
-import { IS_DEVELOPMENT } from './../../config.js'
-import useGetData from './../../Hook/useGetData'
-import styles from './ArticleContainer.module.css'
+import NewsScroller from './../NewsScroller/NewsScroller.jsx'
+import NewsSlider from './../NewsSlider/NewsSlider.jsx'
+import Spinner from '../../component/Spinner/Spinner.jsx'
+import CarrouselInfo from '../CarrouselInfo/index.jsx'
+import NavBar from '../../component/NavBar/NavBar.jsx'
+import { IS_DEVELOPMENT } from '../../config.js'
+import useGetData from '../../Hook/useGetData.jsx'
+import styles from './Home.module.css'
 import { useContext, useEffect } from 'react'
-import { userContext } from '../../../context/user'
-import getDocumentUser from '../../FireBase/getDocumentUser'
-import Footer from './../../Footer/Footer'
+import { userContext } from '../../../context/user.jsx'
+import getDocumentUser from '../../FireBase/getDocumentUser.jsx'
+import Footer from '../../pages/Footer/Footer.jsx'
 
-export default function ArticleContainer () {
+export default function Home () {
   console.log('entradas')
   const { state } = useContext(userContext)
   if (!state.document) getDocumentUser()
@@ -33,11 +33,11 @@ export default function ArticleContainer () {
   return (
     <div className={styles.container}>
       {isLoading
-        ? <div className={styles.component1}> <Spinner /> </div>
+        ? <div className={styles.newsScroller}> <Spinner /> </div>
         : (
-          <div className={styles.component1}>
+          <div className={styles.newsScroller}>
             <NavBar />
-            <Component1 notes={articulo1} />
+            <NewsScroller notes={articulo1} />
           </div>
           )}
       <div className='row'>
@@ -47,14 +47,14 @@ export default function ArticleContainer () {
               <Spinner />
             </div>)
           : (
-            <div className='col-6 md-col-8 pe-0'>
-              <Component2
+            <div className='col-8 md-col-8 pe-0'>
+              <NewsSlider
                 notes2={articulo2}
               />
             </div>
             )}
-        <div className='col-6 md-col-4 ps-0'>
-          <Component3 />
+        <div className='col-4 md-col-4 ps-0'>
+          <CarrouselInfo />
         </div>
       </div>
       {IS_DEVELOPMENT && <Footer />}

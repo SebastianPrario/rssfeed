@@ -1,8 +1,7 @@
 import { useState, React, useEffect } from 'react'
-import styles from './Component2.module.css'
+import styles from './newsSlider.module.css'
 
-const Component2 = ({ notes2 }) => {
- 
+const NewsSlider = ({ notes2 }) => {
   const [title, setTitle] = useState()
   const [, setContent] = useState()
   const [source, setSource] = useState()
@@ -51,4 +50,4 @@ const Component2 = ({ notes2 }) => {
   )
 }
 
-export default Component2
+export default NewsSlider

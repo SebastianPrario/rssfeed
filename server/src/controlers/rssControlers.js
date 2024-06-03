@@ -2,6 +2,8 @@ const shuffleArray = require('../utils/shuffle')
 const perfilRss = require('../getSource/perfil.js')
 const clarinRss = require('./../getSource/clarin')
 const oleRss = require('../getSource/ole.js')
+const paginaRss = require('../getSource/pagina.js')
+const profesionalRss = require('../getSource/profesional.js')
 
 const parseInfo = async (source) => {
   let articles = []
@@ -13,6 +15,17 @@ const parseInfo = async (source) => {
         'https://www.clarin.com/rss/deportes/', 'https://www.clarin.com/rss/economia/'
       ]
       articles = clarinRss(URL)
+      break
+    case 'Pagina':
+      URL = ['https://www.pagina12.com.ar/rss/portada', 'https://www.pagina12.com.ar/rss/suplementos/cultura-y-espectaculos/notas',
+        'https://www.pagina12.com.ar/rss/edicion-impresa']
+      articles = paginaRss(URL)
+      break
+    case 'Profesional':
+      URL = ['https://www.iprofesional.com/rss/home', 'https://www.iprofesional.com/rss/impuestos',
+        'https://www.iprofesional.com/rss/tecnologia', 'https://www.iprofesional.com/rss/impuestos'
+      ]
+      articles = profesionalRss(URL)
       break
     case 'Ole':
       URL = ['https://www.ole.com.ar/rss/ultimas-noticias/', 'http://www.ole.com.ar/rss/futbol-internacional/libertadores', 'http://www.ole.com.ar/rss/futbol-internacional/champions/']

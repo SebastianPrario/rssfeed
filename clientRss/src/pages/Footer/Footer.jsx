@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import './Footer.css'
-import { userContext } from '../../context/user'
+import { userContext } from '../../../context/user'
 
 export default function Footer () {
   // const { filters } = useFilters()

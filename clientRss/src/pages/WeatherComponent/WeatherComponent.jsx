@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import Spinner from '../../src/component/Spinner/Spinner'
+import Spinner from '../../component/Spinner/Spinner'
 import styles from './WeatherComponent.module.css'
 import axios from 'axios'
 
@@ -44,7 +44,7 @@ const WeatherComponent = () => {
       ? <Spinner />
       : (
         <div>
-          <section className='vh-100 bg-primary pt-5 pt-md-3'>
+          <section className={styles.weatherContainer}>
             <div className='container  h-100 '>
               <div className='row d-flex h-100'>
                 <div className='col-12 col-md-11 col-xl-11 md-1 '>

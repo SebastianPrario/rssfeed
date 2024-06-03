@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { loginWithMail } from '../../../FireBase/loginwithMail'
+import { loginWithMail } from '../../FireBase/loginwithMail'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { loginWithGoogle } from '../../../FireBase/loginWithGoogle'
+import { loginWithGoogle } from '../../FireBase/loginWithGoogle'
 
 export default function FormLogin ({onCloseModal}) {
   const [userLogin, setUserLogin] = useState({ email: '', password: '' })

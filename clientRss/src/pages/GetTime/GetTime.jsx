@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styles from './GetTime.module.css'
-import logo from '../../public/logo.jpg'
+import logo from '../../../public/logo.jpg'
 
 const GetTime = () => {
   const [currentTime, setCurrentTime] = useState(new Date())
-  const week = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-  const dayWeek = week[currentTime.getDay()] 
-  
+  const week = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+  const dayWeek = week[currentTime.getDay()]
+
   useEffect(() => {
     // Actualiza la hora cada segundo
     const intervalId = setInterval(() => {

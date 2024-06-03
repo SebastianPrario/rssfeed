@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import styles from './Component1.module.css'
+import styles from './newsScroller.module.css'
 import gsap from 'gsap'
 
-const Component1 = ({ notes }) => {
+const NewsScroller = ({ notes }) => {
   const [altura, setAltura] = useState(3000)
   const [article, setArticle] = useState()
   const [source, setSource] = useState()
@@ -32,7 +32,7 @@ const Component1 = ({ notes }) => {
   }, [notes])
 
   return (
-    <div className={styles.component1}>
+    <div className={styles.newsScroller}>
 
       <div className='row'>
         <div className='pt-4' id='miDiv' ref={divContext}>
@@ -53,4 +53,4 @@ const Component1 = ({ notes }) => {
   )
 }
 
-export default Component1
+export default NewsScroller

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import useGetData from '../Hook/useGetData'
 import styles from './GetQuote.module.css'
-import Spinner from '../component/Spinner/Spinner'
+import Spinner from '../../component/Spinner/Spinner'
 import axios from 'axios'
 
 const getAxios = async () => {

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import styled from 'styled-components'
-import LoginModal from '../pages/LoginModal'
+import LoginModal from '../../pages/LoginModal'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
-import { fireBaseConfig } from '../FireBase/fireBaseConfig'
-import logo from '../../public/logo.jpg'
-import { userContext } from '../../context/user'
-import FormLogin from '../pages/LoginModal/FormLogin/FormLogin'
-import UserForm from '../pages/UserForm'
-import PreferUser from '../pages/PreferUser/PreferUser'
+import { fireBaseConfig } from '../../FireBase/fireBaseConfig'
+import logo from '../../../public/logo.jpg'
+import { userContext } from '../../../context/user'
+import FormLogin from '../../pages/FormLogin/FormLogin'
+import UserForm from '../../pages/UserForm'
+import PreferUser from '../../pages/PreferUser/PreferUser'
 
 const Nav = styled.nav`
     display: flex;
@@ -46,21 +46,21 @@ export default function NavBar () {
   if (handleChange === 'login') {
     return (
       <LoginModal handleLogin={handleLogin}>
-        <FormLogin onCloseModal={setHandleChange}/>
+        <FormLogin onCloseModal={setHandleChange} />
       </LoginModal>
     )
   }
   if (handleChange === 'form') {
     return (
       <LoginModal handleLogin={handleLogin}>
-        <UserForm onCloseModal={setHandleChange}/>
+        <UserForm onCloseModal={setHandleChange} />
       </LoginModal>
     )
   }
   if (handleChange === 'pref') {
     return (
       <LoginModal handleLogin={handleLogin}>
-        <PreferUser setHandleChange={setHandleChange}/>
+        <PreferUser setHandleChange={setHandleChange} />
       </LoginModal>
     )
   }
