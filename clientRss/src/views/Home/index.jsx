@@ -1,18 +1,17 @@
-import NewsScroller from './../NewsScroller/NewsScroller.jsx'
-import NewsSlider from './../NewsSlider/NewsSlider.jsx'
-import Spinner from '../../component/Spinner/Spinner.jsx'
-import CarrouselInfo from '../CarrouselInfo/index.jsx'
-import NavBar from '../../component/NavBar/NavBar.jsx'
+import NewsScroller from '@views/NewsScroller'
+import NewsSlider from '../NewsSlider'
+import Spinner from '@component/Spinner/Spinner.jsx'
+import CarrouselInfo from '../CarrouselInfo'
+import NavBar from '@views/NavBar'
 import { IS_DEVELOPMENT } from '../../config.js'
 import useGetData from '../../Hook/useGetData.jsx'
 import styles from './Home.module.css'
 import { useContext, useEffect } from 'react'
 import { userContext } from '../../../context/user.jsx'
 import getDocumentUser from '../../FireBase/getDocumentUser.jsx'
-import Footer from '../../pages/Footer/Footer.jsx'
+import Footer from '@component/Footer/Footer.jsx'
 
 export default function Home () {
-  console.log('entradas')
   const { state } = useContext(userContext)
   if (!state.document) getDocumentUser()
   const { document } = state
@@ -47,13 +46,13 @@ export default function Home () {
               <Spinner />
             </div>)
           : (
-            <div className='col-8 md-col-8 pe-0'>
+            <div className='col-6 col-md-8 pe-0'>
               <NewsSlider
                 notes2={articulo2}
               />
             </div>
             )}
-        <div className='col-4 md-col-4 ps-0'>
+        <div className='col-6 col-md-4 ps-0'>
           <CarrouselInfo />
         </div>
       </div>

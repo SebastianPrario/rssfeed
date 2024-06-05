@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Styled from './../UserForm/styles'
+import React, { useContext, useState } from 'react'
+import Styled from '../UserForm/styles'
 import { useNavigate } from 'react-router-dom'
-import { db } from '../../FireBase/FireStore'
-import { collection, doc, query, where, setDoc, getDocs, getDoc, addDoc } from 'firebase/firestore'
-import { onAuthStateChanged } from 'firebase/auth'
-import { fireBaseConfig } from '../../FireBase/fireBaseConfig'
-import { userContext } from '../../../context/user'
+import { db } from '@fireBase/fireStore'
+import { collection, doc, addDoc } from 'firebase/firestore'
+import { userContext } from '../../../../../context/user'
 
 const PreferUser = ({ setHandleChange }) => {
   const { state, getUser, getDocument, getDocumentId } = useContext(userContext)

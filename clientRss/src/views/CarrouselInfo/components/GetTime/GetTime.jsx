@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './GetTime.module.css'
-import logo from '../../../public/logo.jpg'
+import logo from '@public/logo.jpg'
 
 const GetTime = () => {
   const [currentTime, setCurrentTime] = useState(new Date())
@@ -21,9 +21,9 @@ const GetTime = () => {
 
   return (
     <div className={styles.body}>
-      <div>
+      {/* <div>
         <img className={styles.image} src={logo} alt='imagen logo página' />
-      </div>
+      </div> */}
       <div className={styles.clock}>
         <p className={styles.date}>{dayWeek}  {currentTime.toLocaleDateString()}</p>
         <p className={styles.time}> {currentTime.toLocaleTimeString()}</p>

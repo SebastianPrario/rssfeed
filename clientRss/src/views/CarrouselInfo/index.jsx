@@ -1,9 +1,9 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import WeatherComponent from '../../pages/WeatherComponent/WeatherComponent'
-import GetQuote from '../../pages/GetQuote/GetQuote'
-import GetTime from '../../pages/GetTime/GetTime'
-import Contact from '../../pages/Contact/Contact'
+import WeatherComponent from './components/WeatherComponent/WeatherComponent'
+import GetQuote from './components/GetQuote/GetQuote'
+import GetTime from './components/GetTime/GetTime'
+import Contact from './components/Contact/Contact'
 
 const CarrouselInfo = () => {
   return (

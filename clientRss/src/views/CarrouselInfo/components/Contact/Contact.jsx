@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Card, Text, Image } from './styles'
-import mail from './../../../public/email.png'
+import mail from '@public/email.png'
 
 export default function Contact () {
   return (

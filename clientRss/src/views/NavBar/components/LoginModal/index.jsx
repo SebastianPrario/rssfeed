@@ -1,9 +1,9 @@
 import React, { Children, useState } from 'react'
 import Styled from './styles'
-import { loginWithMail } from '../../FireBase/loginwithMail'
+import { loginWithMail } from '@fireBase/loginwithMail'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { loginWithGoogle } from '../../FireBase/loginWithGoogle'
+import { loginWithGoogle } from '@fireBase/loginWithGoogle'
 
 
 export default function LoginModal ({ handleLogin, children }) {

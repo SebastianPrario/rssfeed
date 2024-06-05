@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import Spinner from '../../component/Spinner/Spinner'
+import Spinner from './../../../../component/Spinner/Spinner'
 import styles from './WeatherComponent.module.css'
 import axios from 'axios'
 

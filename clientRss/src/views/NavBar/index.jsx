@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import styled from 'styled-components'
-import LoginModal from '../../pages/LoginModal'
+import LoginModal from './components/LoginModal'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { fireBaseConfig } from '../../FireBase/fireBaseConfig'
-import logo from '../../../public/logo.jpg'
+import logo from '@public/logo.jpg'
 import { userContext } from '../../../context/user'
-import FormLogin from '../../pages/FormLogin/FormLogin'
-import UserForm from '../../pages/UserForm'
-import PreferUser from '../../pages/PreferUser/PreferUser'
+import FormLogin from './components/FormLogin'
+import UserForm from './components/UserForm'
+import PreferUser from './components/PreferUser'
 
 const Nav = styled.nav`
     display: flex;
