@@ -7,7 +7,7 @@ import Contact from './components/Contact/Contact'
 
 const CarrouselInfo = () => {
   return (
-    <Carousel controls={false} indicators={false} interval={6000}>
+    <Carousel className='d-flex mt-0 ms-0 ps-0' controls={false} indicators={false} interval={6000}>
       <Carousel.Item>
         <WeatherComponent />
       </Carousel.Item>

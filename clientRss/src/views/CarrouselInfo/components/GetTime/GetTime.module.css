@@ -5,14 +5,21 @@
   background-size: 100%;
   display: flex;
   flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 .image {
   width: 20%;
-  justify-self: center;
-  left: 5%;
-  top: 12%;
+  height: 20%;
   border: 5px solid #333; /* Ancho y estilo del borde */
   border-radius: 8px; /* Bordes redondeados (opcional) */
+  position: absolute;
+  left: 10%;
+  top: 13%;
+  @media (max-width:700px) {
+    display: none;
+  
+}
 }
 .clock {
   font-family: 'Share Tech Mono', monospace;
@@ -50,6 +57,15 @@
       font-size: 12px;
       text-align: center;
       padding:0 0 0 0;
+  }
+  .image {
+    width: 10%;
+    height: 10%;
+    border: 5px solid #333; /* Ancho y estilo del borde */
+    border-radius: 8px; /* Bordes redondeados (opcional) */
+    position: absolute;
+    left: 10%;
+    top: 13%;
   }
 }
 }

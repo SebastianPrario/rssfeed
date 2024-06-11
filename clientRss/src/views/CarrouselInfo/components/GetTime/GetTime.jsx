@@ -21,9 +21,9 @@ const GetTime = () => {
 
   return (
     <div className={styles.body}>
-      {/* <div>
+      <div>
         <img className={styles.image} src={logo} alt='imagen logo página' />
-      </div> */}
+      </div>
       <div className={styles.clock}>
         <p className={styles.date}>{dayWeek}  {currentTime.toLocaleDateString()}</p>
         <p className={styles.time}> {currentTime.toLocaleTimeString()}</p>

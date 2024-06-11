@@ -32,14 +32,12 @@ const NewsScroller = ({ notes }) => {
   }, [notes])
 
   return (
-    <div className={styles.newsScroller}>
-
+    <div className='container-fluid'>
       <div className='row'>
         <div className='pt-4' id='miDiv' ref={divContext}>
           {article && article.map((elem, index) =>
             <div
               key={index}
-              className='px-5'
             >
               <hr />
               <a className='link-offset-2 link-underline link-underline-opacity-0' href={elem.link}>

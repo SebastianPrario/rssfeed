@@ -6,7 +6,11 @@ export default function Contact () {
   return (
     <Container>
       <Card>
-        <Text>
+        <Text className='d-none d-md-flex fs-3'>
+          <Image src={mail} alt='@' />
+          contactolasnoticias@gmail.com
+        </Text>
+        <Text className='d-block d-md-none text-center fs-12'>
           <Image src={mail} alt='@' />
           contactolasnoticias@gmail.com
         </Text>

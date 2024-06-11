@@ -1,14 +1,12 @@
 import React, { useContext, useState } from 'react'
 import Styled from '../UserForm/styles'
-import { useNavigate } from 'react-router-dom'
-import { db } from '@fireBase/fireStore'
-import { collection, doc, addDoc } from 'firebase/firestore'
+import { db } from './../../../../fireBase/FireStore'
+import { collection, doc, addDoc, setDoc } from 'firebase/firestore'
 import { userContext } from '../../../../../context/user'
 
 const PreferUser = ({ setHandleChange }) => {
-  const { state, getUser, getDocument, getDocumentId } = useContext(userContext)
+  const { state, getUser } = useContext(userContext)
   const { document, documentId, user } = state
-  const navigate = useNavigate()
   const [selectedOption, setSelectedOption] = useState(document || [])
 
   const handleOptionChange = (event) => {

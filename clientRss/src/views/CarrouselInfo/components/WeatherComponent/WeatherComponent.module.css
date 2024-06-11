@@ -1,6 +1,8 @@
 .weatherContainer {
-    height: 100hv;
-    background-color: rgb(213, 200, 200);
+    padding-top: 0px !important;
+    margin-top: 0px;
+    height: 100vh;
+    background-color: rgb(255, 5, 5);
 }
 .weatherDiv {
     display: flex;

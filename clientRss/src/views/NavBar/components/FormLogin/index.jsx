@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { loginWithGoogle } from '@fireBase/loginWithGoogle'
 
-export default function FormLogin ({onCloseModal}) {
+export default function FormLogin ({ onCloseModal }) {
   const [userLogin, setUserLogin] = useState({ email: '', password: '' })
- 
+
   function handleChange (e) {
     const nameinput = e.target.name
     const valueinput = e.target.value
@@ -46,7 +46,7 @@ export default function FormLogin ({onCloseModal}) {
             value={userLogin.email}
             onChange={(e) => handleChange(e)}
           />
-          <label className='form-label' for='typeEmailX'>correo</label>
+          <label className='form-label' htmlFor='typeEmailX'>correo</label>
         </div>
 
         <div data-mdb-input-init className='form-outline form-white mb-4'>

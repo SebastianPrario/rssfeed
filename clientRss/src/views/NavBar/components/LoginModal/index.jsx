@@ -1,38 +1,8 @@
-import React, { Children, useState } from 'react'
+import React, { useState } from 'react'
 import Styled from './styles'
-import { loginWithMail } from '@fireBase/loginwithMail'
-import { Link } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import { loginWithGoogle } from '@fireBase/loginWithGoogle'
-
 
 export default function LoginModal ({ handleLogin, children }) {
   const [userLogin, setUserLogin] = useState({ email: '', password: '' })
-
-  function handleChange (e) {
-    const nameinput = e.target.name
-    const valueinput = e.target.value
-    setUserLogin({
-      ...userLogin,
-      [nameinput]: valueinput
-    })
-  }
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const { errors } = await loginWithMail(userLogin.email, userLogin.password)
-    if (errors.length > 0) {
-      setUserLogin({ email: '', password: '' })
-      return Swal.fire('email o contraseña incorrecta')
-    }
-    setUserLogin({ email: '', password: '' })
-    handleLogin()
-  }
-
-  const handleWithGoogle = () => {
-    loginWithGoogle()
-    setUserLogin({ email: '', password: '' })
-    handleLogin()
-  }
 
   return (
     <Styled.StyledModal>

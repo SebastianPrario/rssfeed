@@ -38,9 +38,10 @@ export default function NavBar () {
   const handleLogin = () => {
     setHandleChange('')
   }
-  const setLogout = async () => {
-    await signOut(auth)
-    clearDocument()
+  const setLogout = () => {
+    signOut(auth).then(
+      () => clearDocument()
+    )
   }
 
   if (handleChange === 'login') {
@@ -85,10 +86,11 @@ export default function NavBar () {
       </div>
       <div className='col-4 d-inline-flex'>
         <img src={logo} style={{ width: '50px' }} alt='imagen del logo de la pagina' />
-        <h5 className='text-center ms-1 text-white fs-1 '>titulares</h5>
+        <h5 className='d-none d-sm-flex text-center ms-1 text-white fs-1 '>Las Noticias Ya</h5>
+        <h5 className='col-12 d-flex d-sm-none text-center ms-auto my-auto text-white fs-6 '>Las Noticias Ya</h5>
       </div>
       <div className='col-4'>
-        {state.user && <div className='d-none d-md-block fs-4 mt-2 text-white'><b>Hola,{state.user}</b></div>}
+        {state.user && <div className='d-none d-md-block fs-4 mt-2 text-white'><b>Hola, {state.user}</b></div>}
       </div>
     </Nav>
   )

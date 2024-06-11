@@ -6,7 +6,7 @@ import { fireBaseConfig } from './fireBaseConfig'
 import { userContext } from '../../context/user'
 
 export default function getDocumentUser () {
-  const { state, getDocument, getDocumentId, getUser } = useContext(userContext)
+  const { state, getUser } = useContext(userContext)
   const auth = fireBaseConfig()
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -22,18 +22,20 @@ export default function getDocumentUser () {
   // // esta funcion busca el documento que tenga el campo igual al nombre del usuario
 
   const getUserPrefer = async () => {
-    console.log(state.user)
-    const q = query(collection(db, 'UserPreferRss'), where('usuario', '==', state.user))
-    const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-      // setDocumentInfo(doc.id)
-      if (!state.document) {
-        getUser({
-          document: (doc.data().userPrefer),
-          documentId: (doc.id)
-        })
-      }
-    })
+    try {
+      console.log(state.user)
+      const q = query(collection(db, 'UserPreferRss'), where('usuario', '==', state.user))
+      const querySnapshot = await getDocs(q)
+      querySnapshot.forEach((doc) => {
+        if (!state.document) {
+          getUser({
+            document: (doc.data().userPrefer),
+            documentId: (doc.id)
+          })
+        }
+      })
+    } catch (error) { console.log(error) }
+    console.log('llega')
   }
   // useEffect(() => {
   //   getUserPrefer(state.userId)

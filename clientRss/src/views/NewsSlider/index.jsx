@@ -41,7 +41,7 @@ const NewsSlider = ({ notes2 }) => {
       <div className='sm-col-12 md-col-6 me-2 mt-3 text-center'>
         <a className='link-offset-2 link-underline link-underline-opacity-0' href={link}>
           <p className='d-blox d-md-none display-7 text-align-center'><b>{title}</b></p>
-          <p className='d-none d-md-block fs-3 text-align-center'><b>{title}</b></p>
+          <p className='d-none d-md-block fs-3 text-center my-5'><b>{title}</b></p>
         </a>
         <p className='fs-6 md-fs-5'>{source}</p>
       </div>

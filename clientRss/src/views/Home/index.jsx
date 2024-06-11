@@ -46,13 +46,13 @@ export default function Home () {
               <Spinner />
             </div>)
           : (
-            <div className='col-6 col-md-8 pe-0'>
+            <div className='col-6 col-md-6 pe-0'>
               <NewsSlider
                 notes2={articulo2}
               />
             </div>
             )}
-        <div className='col-6 col-md-4 ps-0'>
+        <div className='col-6 col-md-6 ps-0'>
           <CarrouselInfo />
         </div>
       </div>

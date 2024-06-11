@@ -19,7 +19,6 @@ function userReducir () {
     })
   }
   const getUser = (user) => {
-    window.localStorage.setItem('user', `${user}`)
     dispatch({
       type: 'GET_USER',
       payload: user
