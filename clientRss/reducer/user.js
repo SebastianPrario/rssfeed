@@ -8,7 +8,6 @@ export const USER_ACTION_TYPES = {
   GET_DOCUMENTID: 'GET_DOCUMENTID'
 }
 
-// update localStorage with state
 export const updateLocalStorage = state => {
   window.localStorage.setItem('user', JSON.stringify(state))
 }

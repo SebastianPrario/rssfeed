@@ -49,7 +49,7 @@ const WeatherComponent = () => {
               <div className='card bg-white my-auto ps-md-5 ms-md-5 mt-2 mt-md-4 ' style={{ borderRadius: '35px' }}>
                 <div className='card-body '>
                   <h4 className='d-none d-sm-flex mt-2 mx-auto'>El tiempo en {location}</h4>
-                  <h6 className='d-flex d-sm-nonen mt-2 mx-auto'>El tiempo en {location}</h6>
+                  <h6 className='d-flex d-sm-none mt-2 mx-auto'>El tiempo en {location}</h6>
                   <div className='d-flex flex-row justify-content-center text-center mt-4 mb-2'>
                     <div className='d-none d-xlg-flex me-4'>
                       <img src={weatherImg} width='250px' />
