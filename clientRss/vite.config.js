@@ -16,6 +16,10 @@ export default defineConfig({
         replacement: path.resolve(path.join(__dirname, '/src/component'))
       },
       {
+        find: '@fireBase',
+        replacement: path.resolve(path.join(__dirname, '/src/fireBase'))
+      },
+      {
         find: '@public',
         replacement: path.resolve(path.join(__dirname, '/public'))
       }
