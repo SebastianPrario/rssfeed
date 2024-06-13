@@ -3,7 +3,7 @@ import { fireBaseConfig } from './fireBaseConfig'
 
 export const createUserWithEmail = (email, password) => {
   const auth = fireBaseConfig()
-  const statusUserCreate  = createUserWithEmailAndPassword(auth, email, password)
+  const statusUserCreate = createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up
       const user = userCredential.user
@@ -14,5 +14,5 @@ export const createUserWithEmail = (email, password) => {
       console.log('con errores')
       return { status: false, message: errorMessage }
     })
-    return statusUserCreate
+  return statusUserCreate
 }
