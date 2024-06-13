@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Styled from '../UserForm/styles'
-import { db } from '@fireBase/FireStore'
+import { db } from '@fireBase/FireStore.js'
 import { collection, doc, addDoc, setDoc } from 'firebase/firestore'
 import { userContext } from './../../../../../context/user'
 
@@ -65,7 +65,7 @@ const PreferUser = ({ setHandleChange }) => {
         </Styled.StyledSelection>
         <div className='mb-4'>
           <button className='btn btn-danger mt-2 me-4' type='button' onClick={() => setSelectedOption([])}>resetear elección</button>
-          <button className='btn btn-danger mt-2 me-4' disabled={selectedOption.length < 2 } type='submit' onClick={() => onSubmit()}>enviar</button>
+          <button className='btn btn-danger mt-2 me-4' disabled={selectedOption.length < 2} type='submit' onClick={() => onSubmit()}>enviar</button>
         </div>
       </div>
 
