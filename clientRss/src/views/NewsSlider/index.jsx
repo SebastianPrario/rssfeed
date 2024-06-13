@@ -1,5 +1,5 @@
 import { useState, React, useEffect } from 'react'
-import styles from './newsSlider.module.css'
+import styles from './NewsSlider.module.css'
 
 const NewsSlider = ({ notes2 }) => {
   const [title, setTitle] = useState()
