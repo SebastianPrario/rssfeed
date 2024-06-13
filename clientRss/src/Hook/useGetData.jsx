@@ -7,7 +7,6 @@ const useGetData = (URL, URL2, time) => {
     data2: {},
     isLoading: true
   })
-  console.log(URL, URL2, time)
   useEffect(() => {
     getAxios()
     upDate()

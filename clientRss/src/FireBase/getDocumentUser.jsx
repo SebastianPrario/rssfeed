@@ -23,7 +23,6 @@ export default function getDocumentUser () {
 
   const getUserPrefer = async () => {
     try {
-      console.log(state.user)
       const q = query(collection(db, 'UserPreferRss'), where('usuario', '==', state.user))
       const querySnapshot = await getDocs(q)
       querySnapshot.forEach((doc) => {
@@ -35,7 +34,6 @@ export default function getDocumentUser () {
         }
       })
     } catch (error) { console.log(error) }
-    console.log('llega')
   }
   // useEffect(() => {
   //   getUserPrefer(state.userId)

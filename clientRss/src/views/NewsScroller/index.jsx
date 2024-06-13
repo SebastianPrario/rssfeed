@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import styles from './newsScroller.module.css'
 import gsap from 'gsap'
 
 const NewsScroller = ({ notes }) => {
@@ -10,7 +9,7 @@ const NewsScroller = ({ notes }) => {
 
   const tl = gsap?.timeline({ repeat: -1 })
 
-  tl.fromTo(divContext && divContext.current,
+  divContext && tl.fromTo(divContext && divContext.current,
     {
       y: 200,
       ease: 'none'

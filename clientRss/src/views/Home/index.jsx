@@ -25,7 +25,7 @@ export default function Home () {
 
   const { data, getAxios } = useGetData(URL, URL2, 600000)
   const { data: articulo1, data2: articulo2, isLoading } = data
-  console.log(data)
+
   useEffect(() => {
     getAxios()
   }, [document])

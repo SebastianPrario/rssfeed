@@ -10,9 +10,7 @@ const getAxios = async () => {
 
 const GetQuote = () => {
   const [data, setData] = useState()
-  data && console.log(data.data)
   const quote = data
-  console.log(quote)
   useEffect(() => {
     getAxios().then((data) => setData(data.data))
   }, [])
