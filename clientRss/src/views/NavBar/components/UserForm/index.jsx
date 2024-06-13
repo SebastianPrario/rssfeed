@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import Styled from './styles'
-import { createUserWithEmail } from '@fireBase/createUserWithEmail.js'
+import { createUserWithEmail } from '../../../../fireBase/createUserWithEmail'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
