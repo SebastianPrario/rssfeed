@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Styled from '../UserForm/styles'
 import { db } from '@fireBase/FireStore'
-import { collection, doc, addDoc, setDoc } from 'firebase/fireStore'
+import { collection, doc, addDoc, setDoc } from 'firebase/firestore'
 import { userContext } from './../../../../../context/user'
 
 const PreferUser = ({ setHandleChange }) => {
