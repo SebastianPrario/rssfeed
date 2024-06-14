@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './GetTime.module.css'
-import logo from '@public/logo.jpg'
+import logo from '/logo.jpg'
 
 const GetTime = () => {
   const [currentTime, setCurrentTime] = useState(new Date())

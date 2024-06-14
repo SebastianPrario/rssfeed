@@ -24,7 +24,7 @@ export default function Home () {
   }
 
   const { data, getAxios } = useGetData(URL, URL2, 600000)
-  const { data: articulo1, data2: articulo2, isLoading } = data
+  const { data: article1, data2: article2, isLoading } = data
 
   useEffect(() => {
     getAxios()
@@ -36,7 +36,7 @@ export default function Home () {
         : (
           <div className={styles.newsScroller}>
             <NavBar />
-            <NewsScroller notes={articulo1} />
+            <NewsScroller notes={article1} />
           </div>
           )}
       <div className='row'>
@@ -48,7 +48,7 @@ export default function Home () {
           : (
             <div className='col-6 col-md-6 pe-0'>
               <NewsSlider
-                notes2={articulo2}
+                notes2={article2}
               />
             </div>
             )}

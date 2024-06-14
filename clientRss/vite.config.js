@@ -14,11 +14,8 @@ export default defineConfig({
       {
         find: '@component',
         replacement: path.resolve(path.join(__dirname, '/src/component'))
-      },
-      {
-        find: '@public',
-        replacement: path.resolve(path.join(__dirname, '/public'))
       }
+      
     ]
   }
 })
