@@ -1,15 +1,12 @@
 import { useForm } from 'react-hook-form'
 import Styled from './styles'
-import { createUserWithEmail } from './../../../../fireBase/createUserWithEmail'
+import { createUserWithEmail } from '@fire/createUserWithEmail'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 export default function UserForm ({ onCloseModal }) {
   const [fireBase, setFireBase] = useState(null)
-  const navigate = useNavigate()
-
   const {
-    register, // el register tiene informacion de cada campo
+    register,
     handleSubmit,
     reset,
     formState: { errors }
