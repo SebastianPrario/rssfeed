@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Styled from '../UserForm/styles'
-import { db } from '@fire/FireStore.js'
+import { db } from './FireStore.js'
 import { collection, doc, addDoc, setDoc } from 'firebase/firestore'
 import { userContext } from './../../../../../context/user'
 
