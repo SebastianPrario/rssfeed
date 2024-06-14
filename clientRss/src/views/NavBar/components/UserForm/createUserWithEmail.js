@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { fireBaseConfig } from '../../../../fireBase/fireBaseConfig'
+import { fireBaseConfig } from './fireBaseConfig'
 
 export const createUserWithEmail = (email, password) => {
   const auth = fireBaseConfig()
