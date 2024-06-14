@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import Styled from './styles'
-import { createUserWithEmail } from '@fire/createUserWithEmail'
+import { createUserWithEmail } from '.createUserWithEmail'
 import { useState } from 'react'
 
 export default function UserForm ({ onCloseModal }) {
