@@ -17,7 +17,7 @@ export default defineConfig({
       },
       {
         find: '@fire',
-        replacement: path.resolve(path.join(__dirname, '/src/fireBase'))
+        replacement: path.resolve(path.join(__dirname, '/src/fireConfig'))
       }
     ]
   }

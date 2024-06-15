@@ -8,7 +8,7 @@ import useGetData from '../../Hook/useGetData.jsx'
 import styles from './Home.module.css'
 import { useContext, useEffect } from 'react'
 import { userContext } from '../../../context/user.jsx'
-import getDocumentUser from '../../FireBase/getDocumentUser.jsx'
+import getDocumentUser from '../../FireConfig/getDocumentUser.jsx'
 import Footer from '@component/Footer/Footer.jsx'
 
 export default function Home () {
