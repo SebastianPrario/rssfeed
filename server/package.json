@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sebastian Prario",
@@ -20,11 +21,5 @@
     "node-stream-zip": "^1.15.0",
     "nodemon": "^3.0.2",
     "rss-parser": "^3.13.0"
-  },
-  "devDependencies": {
-    "standard": "^17.1.0"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
   }
 }
