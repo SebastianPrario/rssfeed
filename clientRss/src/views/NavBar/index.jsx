@@ -47,7 +47,10 @@ export default function NavBar () {
   if (handleChange === 'login') {
     return (
       <LoginModal handleLogin={handleLogin}>
-        <FormLogin onCloseModal={setHandleChange} />
+        <FormLogin
+          onCloseModal={setHandleChange}
+          setHandleChange={setHandleChange}
+        />
       </LoginModal>
     )
   }

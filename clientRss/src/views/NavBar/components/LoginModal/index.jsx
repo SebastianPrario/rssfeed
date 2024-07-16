@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Styled from './styles'
 
 export default function LoginModal ({ handleLogin, children }) {
-  const [userLogin, setUserLogin] = useState({ email: '', password: '' })
-
   return (
     <Styled.StyledModal>
       <div className='container py-1 col-12'>

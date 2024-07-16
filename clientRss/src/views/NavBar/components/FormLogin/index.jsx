@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { loginWithGoogle } from '../../../../FireConfig/loginWithGoogle'
 
-export default function FormLogin ({ onCloseModal }) {
+export default function FormLogin ({ onCloseModal, setHandleChange }) {
   const [userLogin, setUserLogin] = useState({ email: '', password: '' })
 
   function handleChange (e) {
@@ -77,7 +77,7 @@ export default function FormLogin ({ onCloseModal }) {
           </button>
         </div>
         <div>
-          <p className='mt-3'> No tienes cuenta? <Link className='text-white-50 ms-1 fw-bold' to='/form'>Sign Up</Link>
+          <p className='mt-3'> No tienes cuenta? <button onClick={() => setHandleChange('form')}>Sign Up</button>
           </p>
         </div>
 
