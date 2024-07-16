@@ -15,7 +15,7 @@ const NewsSlider = ({ notes2 }) => {
       setContent(notes2[position].content)
       setSource(notes2[position].source)
       setLink(notes2[position].link)
-      setImage(notes2[position].image)
+      setImage(notes2[position].image.trim())
       setPosition(position + 1)
     }
   }
