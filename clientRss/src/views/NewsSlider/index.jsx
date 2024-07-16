@@ -19,7 +19,7 @@ const NewsSlider = ({ notes2 }) => {
       setPosition(position + 1)
     }
   }
-
+  console.log(image)
   const slider = () => {
     if (position === notes2.length) return setPosition(0)
 
