@@ -21,7 +21,7 @@ const clarinRss = async (URL) => {
           content: `${elem.content}`,
           link: `${elem.link}`,
           source: `${feed.title}`,
-          image
+          image: image
         }
       )
     }
