@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server Rss",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sebastian Prario",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase": "^10.11.1",
+    "fs-js": "^1.0.6",
+    "jszip": "^3.10.1",
+    "node-stream-zip": "^1.15.0",
+    "nodemon": "^3.0.2",
+    "rss-parser": "^3.13.0"
+  }
+}

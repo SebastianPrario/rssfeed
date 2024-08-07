@@ -1,0 +1,64 @@
+import styled from 'styled-components'
+
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+`
+
+export const StyledLabel = styled.label`
+  display: block;
+  margin: 15px;
+  font-weight: bold;
+ 
+`
+
+export const StyledInput = styled.input`
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border-color: ${props => props ? 'red' : 'black'};
+`
+
+export const StyledButton = styled.button`
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:enabled {
+    opacity: 1.0;
+  }
+  opacity: ${props => !props.enabled ? 0.5 : 1};
+`
+
+export const StyledAlert = styled.span`
+  font-size: xx-small;
+
+  background-color: #f44336;
+  color: black;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+
+`
+export const StyledSelection = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: inherit;
+  height: 25px;
+  color: black;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+
+`
+export default { StyledSelection, StyledForm, StyledInput, StyledLabel, StyledAlert, StyledButton }

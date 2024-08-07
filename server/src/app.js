@@ -1,14 +1,10 @@
-const express = require ('express')
-const routes = require ('./routes/index.js')
-const cors = require ('cors')
-const { unzip, getURL } = require('./utils/getWeather.js')
+const express = require('express')
+const routes = require('./routes/index.js')
+const cors = require('cors')
 
-
-
-
-const server = express();
+const server = express()
 
 server.use(cors())
-server.use('/',routes)
+server.use('/', routes)
 
-module.exports = server;
+module.exports = server
